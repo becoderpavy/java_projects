@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+
+			<div class="card-body" th:if="${c}">
+				<div class="container text-center">
+					<img th:src="@{'/img/'+${c.imgUrl}}"
+						style="width: 80px; height: 80px; border-radius: 50%; border: 1px solid black;">
+
+					<table class="table mt-3">
+						<tbody>
+							<tr>
+								<th scope="row">Name</th>
+								<td>[[${c.name}]] ([[${c.secondName}]])</td>
+
+							</tr>
+							<tr>
+								<th scope="row">Phone No</th>
+								<td>[[${c.phone}]]</td>
+
+							</tr>
+							<tr>
+								<th scope="row">Email</th>
+								<td>[[${c.email}]]</td>
+							</tr>
+							<tr>
+								<th scope="row">Work</th>
+								<td>[[${c.work}]]</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="container mt-3 p-4">[[${c.description}]]</div>
+
+					<div class="container">
+						<a th:href="@{'/user/update-contact/'+${c.id}}" class="btn btn-primary btn-sm btn-block">Edit</a>
+						<button th:onclick="|deleteContact(${c.id})|" class="btn btn-danger btn-sm btn-block">Delete</button>
+					</div>
+
+				</div>
+			</div>
+
+			
+
+		</div>
+		<h1 th:unless="${c}" class="text-center text-white bg-danger p-4">You Dont have permission to see this
+				contact</h1>
+	</section>
+</body>
+</html>

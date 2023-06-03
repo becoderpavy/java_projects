@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="recruiter/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<div class="text-center">
+			<img alt="" src="../img/rec.png" style="width: 100%; height: 50vh">
+		</div>
+
+		<div class="container">
+			<div class="row p-5">
+				<div class="col-md-4">
+					<a href="addJobs" class="text-success" style="text-decoration: none;">
+						<div class="card paint-card">
+							<div class="card-body text-center ">
+								<i class="fas fa-plus-circle fa-3x text-success"></i><br>
+								<h4>Add Jobs</h4>
+								-----------
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-md-4">
+					<a href="viewJobs" class="text-success" style="text-decoration: none;">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fas fa-server fa-3x text-success"></i><br>
+								<h4>View Jobs</h4>
+								-----------
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a href="viewCandidates" class="text-success" style="text-decoration: none;">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fas fa-user-circle fa-3x text-success"></i><br>
+								<h4>Candidates</h4>
+								-----------
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+	</section>
+</body>
+</html>

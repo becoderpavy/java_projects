@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Pet Details</title>
+<!-- CSS Only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css\bootstrap.min.css">
+<link rel="stylesheet" href="fonts\icomoon\icomoon.css">
+<link rel="stylesheet" href="css\main.css">
+
+<script src="js\jquery.js"></script>
+<script src="js\tether.min.js"></script>
+<script src="js\bootstrap.min.js"></script>
+
+	<script>
+		function DisplayPet()
+		{
+			ob = new XMLHttpRequest();
+			ob.open("GET","DisplayPet.jsp");
+			ob.send();
+			ob.onreadystatechange=function()
+			{
+				if(ob.status==200 && ob.readyState==4)
+					{
+						document.getElementById("output").innerHTML=ob.responseText;
+					}
+			}
+		}		
+</script>
+
+</head>
+<body onload="DisplayPet()">
+			<!-- BEGIN .app-wrap -->
+		<div class="app-wrap">
+			<!-- BEGIN .app-heading -->
+			<header class="app-header">
+				<div class="container-fluid">
+					<div class="row gutters">
+						<div class="col-xl-7 col-lg-7 col-md-6 col-sm-7 col-4">
+							<img src="images/logo.png" alt="logo here" height="50">
+						</div>
+						<div class="col-xl-5 col-lg-5 col-md-6 col-sm-5 col-4">
+							<ul class="header-actions">
+								<li><a href="">Add Pets</a></li>
+								<li><a href="">View Pets</a></li>
+								<li><a href="">View Adopted Pets</a></li>
+								<li class="nav-item dropdown">
+        							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          							Settings
+        							</a>
+        							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          							<a class="dropdown-item" href="#">Profile</a>
+          							<a class="dropdown-item" href="#">Logout</a>
+          							
+        							</div>
+     							 </li>										
+							</ul>
+						</div>
+					</div>
+					</div>
+			</header>
+			<!-- END: .app-heading -->
+			<div class="container">
+			<div class="login-screen row align-items-center">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<form action= AddPet.jsp method=post enctype="multipart/form-data">
+						<div class="login-container">
+							<div class="row no-gutters">
+								<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+									<div class="login-box">
+										<h1>Add details of pet</h1>
+										<p> For all pet care taker and pet lovers</p>				
+										<div class="form-group">
+			    							<label for="Catagory" class="form-label">Catagory:</label> 
+											<input type="text" class="form-control" id="txtcat" name="txtcat" placeholder="Enter catagory of pet, e.g dog, cat, bird etc">
+											<small id="errcat" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="Pet name" class="form-label">Pet Name:</label> 
+											<input type="text" class="form-control" id="txtpname" name="txtpname" placeholder="Enter breed of the pet">
+											<small id="errpname" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">Description:</label> 
+											<textarea class="form-control" id="txtdesc" name="txtdesc" rows="3"></textarea>				
+										</div>
+				
+										<div class="form-group">
+											<label for="cost" class="form-label">Cost:</label> 
+											<input type="text" class="form-control" id="txtcost" name="txtcost" placeholder="Enter Cost">
+											<small id="errcost" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="disc" class="form-label">Enter Discount on actual cost</label>
+			    							<input type="text" class="form-control" id="txtdisc" name="txtdisc" placeholder="Enter breed of the pet">
+											<small id="errdisc" class="form-text text-muted"></small>
+			    						</div>
+			    
+			    						<div class="form-group">
+			    							<label for="last name" class="form-label">Pet Image:</label> 
+											<input type="file" class="form-control" id="pic" name="pic" placeholder="Enter your city name">
+										</div>
+				
+										
+											<button type="submit" class="btn btn-primary">Add Pet</button>
+											
+									</div>
+								</div>
+								<div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+										<table class="table m-0" id="output" style="margine-left:10px;">
+										
+											
+										</table>
+									<div class="login-slider">
+										<img src="images/re_img.png" alt="img" width="500" height="450 ">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+			<!-- BEGIN .main-footer -->
+			<footer class="main-footer fixed-btm">
+				Copyright Shruti Shiradwade MCA Mini Project 2021.
+			</footer>
+			<!-- END: .main-footer -->
+		</div>
+		<!-- END: .app-wrap -->
+</body>
+</html>

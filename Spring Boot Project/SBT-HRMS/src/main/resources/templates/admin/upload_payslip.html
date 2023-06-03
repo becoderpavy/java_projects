@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-4 offset-md-4">
+					<div class="card paint-card">
+						<p class="fs-1 text-center text-custom">Upload Payslip</p>
+						<div class="card-body">
+							<form action="/admin/savePayslip" method="post"
+								enctype="multipart/form-data">
+
+								<div class="mb-3">
+									<label>Employee Name</label> <input type="text" readonly
+										th:value="${e.firstName+' '+e.lastName}" name="name"
+										class="form-control">
+								</div>
+
+								<div class="col">
+									<label>Email</label> <input type="text" name="email" readonly
+										th:value="${e.email}" class="form-control">
+								</div>
+
+								<div class="col mt-3">
+									<label>Date</label> <input type="date" name="date" required
+										class="form-control">
+								</div>
+
+								<div class="col mt-3">
+									<label>Upload Payslip</label> <input type="file" name="payslip"
+										required class="form-control">
+								</div>
+
+
+								<input type="hidden" name="empId" th:value="${e.id}">
+
+								<button class="btn bg-custom text-white mt-3 col-md-12">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

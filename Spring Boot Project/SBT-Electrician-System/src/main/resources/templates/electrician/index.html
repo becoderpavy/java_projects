@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="electrician/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+
+		<div class="container p-5">
+			<p class="text-center text-danger fs-1">Electrician Dashboard</p>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card paint-card">
+						<a th:href="@{/electrician/viewBooking}"
+							class="text-decoration-none">
+							<div class="card-body text-center text-danger">
+								<i class="fa-solid fa-list fa-2x"></i>
+								<p class="fs-2">Booking</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<a th:href="@{/electrician/viewProfile}"
+						class="text-decoration-none">
+						<div class="card paint-card">
+							<div class="card-body text-center text-danger">
+								<i class="fa-solid fa-circle-user fa-2x"></i>
+								<p class="fs-2">View Profile</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a th:href="@{/electrician/editProfile}"
+						class="text-decoration-none">
+						<div class="card paint-card">
+							<div class="card-body text-center text-danger">
+								<i class="fa-solid fa-pen-to-square fa-2x"></i>
+								<p class="fs-2">Edit Profile</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="bg-danger p-2" style="margin-top: 260px">
+			<p class="text-center text-white">@copyright reserverd by
+				electric.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

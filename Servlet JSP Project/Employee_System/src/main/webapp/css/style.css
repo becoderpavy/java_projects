@@ -1,0 +1,60 @@
+@charset "ISO-8859-1";
+
+.navbar .nav-item:hover .nav-link {
+	background-color: white;
+	border-radius: 10px;
+	color: #01579b;
+}
+.navbar .nav-item .nav-link {
+	font-size: 20px;
+	color: white;
+	
+}
+.bg-custom{
+	background: #01579b !important;	
+}
+
+*{
+    margin:0;
+    padding:0;
+   
+   }
+ 
+.primary-background{
+background:#1769aa ! important;
+
+}
+
+.table-background{
+background:white;
+}
+
+.loginbox{
+    width: 600px;
+    height: 500px;
+    background: rgb(255, 255, 255);
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+   background: rgb(255, 255, 255);
+    box-shadow: 5px 10px 20px #115293;
+    box-sizing: border-box;
+  border-radius: 5px;
+}
+.loginbox1{
+    width: 320px;
+    height: 500px;
+    background: white;
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    transform: translate(60%,-50%);
+    background: whitesmoke;               /*  container BG*/                             
+    box-shadow: 5px 10px 20px #115293;
+    box-sizing: border-box;
+   border-radius: 5px;
+}
+
+
+

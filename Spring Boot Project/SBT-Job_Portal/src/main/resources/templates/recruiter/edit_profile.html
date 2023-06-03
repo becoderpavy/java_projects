@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="recruiter/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid bg-light p-2">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<h3 class="text-center text-success">Edit Profile</h3>
+
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+
+							<form novalidate action="updateProfile" method="post"
+								id="register2">
+								<div class="row">
+									<div class="col">
+										<label for="first name" class="form-label">Company
+											Name</label> <input type="text" class="form-control"
+											th:value="${user.companyName}" name="companyName">
+									</div>
+
+									<div class="col">
+										<label for="first name" class="form-label">Recruiter
+											Name</label> <input type="text" class="form-control" name="name"
+											th:value="${user.name}">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label for="last name" class="form-label">Mobile No.:</label>
+										<input type="text" class="form-control" name="mobNo"
+											th:value="${user.mobNo}">
+									</div>
+
+									<div class="col">
+										<label for="last name" class="form-label">Email ID</label> <input
+											th:value="${user.email}" type="email" readonly
+											class="form-control" name="email">
+									</div>
+								</div>
+
+
+								<div class="form-group mt-2">
+									<label for="last name" class="form-label">Address </label>
+									<textarea rows="3" cols="" class="form-control" name="address">[[${user.address}]]</textarea>
+								</div>
+								<button class="btn btn-success col-md-6 offset-md-3">Update</button>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

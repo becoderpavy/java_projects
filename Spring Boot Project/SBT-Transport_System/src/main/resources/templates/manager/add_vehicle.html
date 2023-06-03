@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Signup</title>
+<style type="text/css">
+.paint-card {
+	box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.3);
+}
+
+.error {
+	color: red;
+}
+</style>
+
+</head>
+<body style="background: url('../img/tr4.png');">
+
+	<div class="container p-3">
+		<div class="row">
+			<div class="col-md-6 ">
+				<div class="card paint-card">
+					<div class="card-body">
+						<p class="fs-4 text-center">Add Truck</p>
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+
+						<div th:if="${session.errorMsg}" class="text-center">
+							<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+						</div>
+						<form id="userRegister"  class="row g-3"
+							action="createVehicle" method="post"
+							enctype="multipart/form-data">
+							<div class="col-6">
+								<label class="form-label">Vehicle Number</label> <input required
+									type="text" name="vechicleNumber"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-6">
+								<label class="form-label">Vechicle Type</label> <input required
+									type="text" name="vehicleType"
+									class="form-control form-control-sm">
+							</div>
+
+
+
+
+
+							<div class="col-md-12">
+								<label class="form-label">Availability</label> <select required
+									name="availability" class="form-control form-control-sm ">
+									<option value="">--select--</option>
+									<option>Booked</option>
+									<option>Available</option>
+								</select>
+							</div>
+
+							<div class="col-md-12">
+								<label class="form-label">Insurance Status</label> <input
+									required id="pass" type="text" name="insuranceStatus"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-md-12">
+								<label class="form-label">Description</label> <input id="pass"
+									required type="text" name="description"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-6">
+								<label class="form-label">Owner Name</label> <input id="pass"
+									required type="text" name="ownerName"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-6">
+								<label class="form-label">Contact No</label> <input id="pass"
+									required type="text" name="contactNo"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-12">
+								<label class="form-label">Image</label> <input id="pass"
+									required type="file" name="imgx"
+									class="form-control form-control-sm">
+							</div>
+
+							<input type="hidden" name="location" th:value="${user.location}">
+
+							<button class="btn bg-custom text-white col-md-12 mt-3">Add
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/user_script.js"></script>
+
+</body>
+</html>

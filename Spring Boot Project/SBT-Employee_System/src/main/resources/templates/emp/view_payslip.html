@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="emp/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+
+			<div class="row">
+				<div class="col-md-9 offset-md-1">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">View Payslip Details</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Role</th>
+										<th scope="col">Mob No</th>
+										<th scope="col">Email</th>
+										<th scope="col">Date</th>
+										<th scope="col">Download</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr th:each="p,c:${list}">
+										<td>[[${c.count}]]</td>
+										<td>[[${emp.firstName+' '+emp.lastName}]]</td>
+										<td><th:block th:if="${emp.role=='ROLE_USER'}">Employee</th:block>
+											<th:block th:if="${emp.role=='ROLE_MANAGER'}">Manager</th:block>
+										</td>
+										<td>[[${emp.mobNo}]]</td>
+										<td>[[${emp.email}]]</td>
+										<td>[[${p.date}]]</td>
+										<td><a th:href="@{'/emp/download/'+${p.id}}"
+											class="btn btn-primary btn-sm"><i
+												class="fa-solid fa-circle-down"></i> Download</a></td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

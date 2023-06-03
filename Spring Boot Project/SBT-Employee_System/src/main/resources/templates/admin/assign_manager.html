@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-4 offset-md-4">
+					<div class="card paint-card">
+						<p class="fs-1 text-center text-custom">Assign Manager</p>
+						<div class="card-body">
+							<form action="/admin/assignManager" method="post">
+
+								<div class="mb-3">
+									<label>Employee Name</label> <input type="text"
+										th:value="${e.firstName+' '+e.lastName}" name="firstName"
+										readonly class="form-control">
+								</div>
+
+								<div class="col">
+									<label>Email</label> <input type="text" name="lastName"
+										readonly th:value="${e.email}" class="form-control">
+								</div>
+								<div class=" mt-3">
+									<select class="form-control" name="managerId">
+										<option>--choose manager--</option>
+										<option th:each="m:${manager}" th:value="${m.id}">[[${m.firstName+'
+											'+m.lastName}]]</option>
+
+									</select>
+								</div>
+								<input type="hidden" name="userId" th:value="${e.id}">
+
+								<button class="btn bg-custom text-white mt-3 col-md-12">Assign</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

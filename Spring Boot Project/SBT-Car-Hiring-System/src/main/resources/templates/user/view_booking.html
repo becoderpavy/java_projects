@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-3">
+		<p class="fs-2 text-center"> My Booking</p>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Order Id</th>
+								<th scope="col">Vehicle Name</th>
+								<th scope="col">Customer Name</th>
+								<th scope="col">Booking Date</th>
+								<th scope="col">End Date</th>
+								<th scope="col">Destination</th>
+								<th scope="col">Total Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="b:${blist}">
+								<th scope="row">[[${b.orderId}]]</th>
+								<td>[[${b.vehicleName}]]</td>
+								<td>[[${b.userName}]]</td>
+								<td>[[${b.bookingDate}]]</td>
+								<td>[[${b.endDate}]]</td>
+								<td>[[${b.from}]] - [[${b.to}]]</td>
+								<td>[[${b.totalAmount}]]</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

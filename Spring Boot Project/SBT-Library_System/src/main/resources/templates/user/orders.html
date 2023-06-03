@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<section>
+			<div class="container p-1">
+				<div class="row">
+					<div class="col-md-12 paint-card">
+						<p class="fs-3 text-center">Your Orders</p>
+						<table class="shadow-sm table ">
+							<thead class="table-dark">
+								<tr>
+									<th>Image</th>
+									<th>Order ID</th>
+									<th>Library Details</th>
+									<th>Order Date</th>
+									<th>Product Details</th>
+									<th>Quantity</th>
+									<th>Total Price</th>
+									<th>Payment Type</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+
+
+								<tr th:each="o:${orders}">
+									<th:block th:with="b=${bookService.getBookById(o.bookId)}">
+
+										<th scope="row"><img
+											th:src="@{'../book_img/'+${b.imgName}}" width="70px"
+											height="70px"></th>
+
+										<th scope="row">[[${o.orderId}]]</th>
+										<td>Library Name : [[${o.library.libraryName}]] <br>
+											Email : [[${o.library.email}]] <br> Address :
+											[[${o.library.address}]], [[${o.library.city}]] <br>
+										</td>
+
+										<th scope="row">[[${o.date}]]</th>
+										<td>[[${b.bookName}]]</td>
+										<td>[[${o.quantity}]]</td>
+
+										<td>[[${o.totalAmount}]]</td>
+										<td>[[${o.paymentType}]]</td>
+										<td>[[${o.status}]]</td>
+
+									</th:block>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+
+		</section>
+	</section>
+</body>
+</html>

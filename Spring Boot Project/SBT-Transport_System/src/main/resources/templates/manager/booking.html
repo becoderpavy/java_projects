@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body
+	style="height: 90vh; background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('../img/tr5.png'); background-repeat: no-repeat; background-size: cover;">
+
+	<div class="container-fluid p-4">
+		<div class="col-md-12">
+			<div class="card paint-card">
+				<div class="card-body">
+					<p class="fs-4 text-center">Your Booking</p>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">SL NO</th>
+								<th scope="col">Username</th>
+								<th scope="col">Vehicle Number</th>
+								<th scope="col">Date</th>
+								<th scope="col">KMs</th>
+								<th scope="col">Amount</th>
+								<th scope="col">Location</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="b,c:${list}">
+								<td>[[${c.count}]]</td>
+								<td>[[${b.userName}]]</td>
+								<td>[[${b.vehicleNumber}]]</td>
+
+								<td>[[${b.date}]]</td>
+								<td>[[${b.kms}]]</td>
+								<td>[[${b.amount}]]</td>
+								<td>[[${b.location}]]</td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

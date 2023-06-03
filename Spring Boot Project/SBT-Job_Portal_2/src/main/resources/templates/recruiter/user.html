@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="recruiter/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-4 bg-custom">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<form action="/recruiter/search" method="get">
+
+						<div class="input-group">
+							<input type="text" class="form-control paint-card" name="ch">
+
+							<button class="btn bg-primary ml-2 col-md-2 text-light">
+								<i class="fa-solid fa-magnifying-glass"></i> Search
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<hr>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 mt-3" th:each="u:${us}">
+					<div class="card paint-card">
+						<div class="card-header text-center">
+							<i class="fa-solid fa-circle-user fa-2x"></i>
+						</div>
+						<div class="card-body">
+							<p>
+								<span class="fw-bold">Name :</span> [[${u.name}]] <br> <span
+									class="fw-bold">Email :</span> [[${u.email}]] <br> <span
+									class="fw-bold">Mob No :</span> [[${u.mobNo}]] <br> <span
+									class="fw-bold">Experience :</span> [[${u.experience}]] <br>
+								<span class="fw-bold">Skill :</span> [[${u.primarySkill}]] <br>
+
+
+							</p>
+							<div class="text-center mt-1">
+								<a th:href="@{'/recruiter/downloadRes/'+${u.resume}}"
+									class="btn btn-primary btn-sm">Resume Download</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 mt-3" th:each="u:${searchUser}">
+					<div class="card paint-card">
+						<div class="card-header text-center">
+							<i class="fa-solid fa-circle-user fa-2x"></i>
+						</div>
+						<div class="card-body">
+							<p>
+								<span class="fw-bold">Name :</span> [[${u.name}]] <br> <span
+									class="fw-bold">Email :</span> [[${u.email}]] <br> <span
+									class="fw-bold">Mob No :</span> [[${u.mobNo}]] <br> <span
+									class="fw-bold">Experience :</span> [[${u.experience}]] <br>
+								<span class="fw-bold">Skill :</span> [[${u.primarySkill}]] <br>
+
+
+							</p>
+							<div class="text-center mt-1">
+								<a th:href="@{'/recruiter/downloadRes/'+${u.resume}}"
+									class="btn btn-primary btn-sm">Resume Download</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+</body>
+</html>

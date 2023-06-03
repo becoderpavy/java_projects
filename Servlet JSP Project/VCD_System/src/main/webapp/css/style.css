@@ -1,0 +1,25 @@
+.bg-custom
+{
+	background-color: #6f42c1!important;
+}
+
+.text-custom{
+	color: #6f42c1;
+}
+
+.navbar .nav-item .nav-link{
+	color: white;
+}
+
+.navbar .nav-item .nav-link {
+	font-size: 18px;
+	color: white;
+}
+
+.btn-custom{
+	background-color: green;
+}
+
+.paint-card {
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+}

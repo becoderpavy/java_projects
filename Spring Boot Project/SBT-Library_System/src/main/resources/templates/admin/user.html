@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container  p-2">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card paint-card">
+						<div class="card-header">
+							<h4 class="form-signin-heading text-center">Add User</h4>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-5" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-5" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+						</div>
+
+						<div class="card-body">
+
+							<form class="form-signin" method="post"
+								th:action="@{/admin/addUser}" id="userRegister" novalidate>
+								<div class="mb-2">
+									<label>First Name</label> <input type="text" name="firstName"
+										required class="form-control form-control-sm">
+								</div>
+								<div class="mb-2">
+									<label>Last Name</label> <input type="text" name="lastName"
+										required class="form-control form-control-sm">
+								</div>
+								<div class="mb-2">
+									<label>Mobile No</label> <input type="text" name="mobNo"
+										required class="form-control form-control-sm">
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Email</label> <input type="text" class="form-control form-control-sm"
+										required name="email">
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Password</label> <input type="text"
+										class="form-control form-control-sm" required name="password">
+								</div>
+
+								<input type="hidden" name="lid" th:value="${lid}"> <input
+									type="hidden" value="ROLE_LIBRIAN" name="role">
+
+
+								<button class="btn bg-custom text-white col-md-12" type="submit">Add
+								</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-8">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">User Details</h4>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Mob No</th>
+										<th scope="col">Action</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="l,c:${lib}">
+										<th scope="row">[[${c.count}]]</th>
+										<td>[[${l.firstName}]] [[${l.lastName}]]</td>
+										<td>[[${l.email}]]</td>
+										<td>[[${l.mobNo}]] </td>
+										
+										<td><a th:href="@{'/admin/editUser/'+${l.id}}"
+											class="btn btn-sm btn-primary">Edit</a> <a
+											th:href="@{'/admin/deleteUser/'+${l.id}+'/'+${lid}}"
+											class="btn btn-sm btn-danger">Delete</a></td>
+
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

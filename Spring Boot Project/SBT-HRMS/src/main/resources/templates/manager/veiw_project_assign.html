@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+			<div class="row">
+				<div class="col-md-9 offset-md-1">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">View Project Details</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Mob No</th>
+										<th scope="col">Email</th>
+										<th scope="col">Manager</th>
+										<th scope="col">Project</th>
+										<th scope="col">Action</th>
+
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr th:each="e,c:${list}">
+										<td>[[${c.count}]]</td>
+
+										<th:block th:with="em=${managerService.getEmpById(e.userId)}">
+
+											<td>[[${em.firstName+' '+em.lastName}]]</td>
+											<td>[[${em.mobNo}]]</td>
+											<td>[[${em.email}]]</td>
+											<td>[[${emp.firstName+' '+emp.lastName}]]</td>
+
+											<th:block
+												th:with="pro=${managerService.getByManagerAndUser(emp.id,em.id)}">
+
+												<th:block th:if="${pro.projectName=='NA'}">
+													<td>Not Assigned</td>
+													<td><button class="btn btn-sm btn-primary disabled">Status</button></td>
+												</th:block>
+
+												<th:block th:if="${pro.projectName!='NA'}">
+													<td>[[${pro.projectName}]]</td>
+													<td><a th:href="@{'projectStatus/'+${e.userId}}" class="btn btn-sm btn-primary">Status</a></td>
+												</th:block>
+
+
+											</th:block>
+
+										</th:block>
+
+
+
+									</tr>
+
+
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

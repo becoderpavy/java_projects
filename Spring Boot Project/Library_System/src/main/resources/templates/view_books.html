@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-3">
+			<div class="row">
+
+				<div class="card">
+					<div class="card-body">
+
+
+
+						<p class="fs-3 text-center">Book Details</p>
+
+
+
+						<div class="col-md-12 paint-card p-2">
+							<div class="row">
+								<div class="col-md-6 text-end">
+									<img alt="" th:src="@{'../book_img/'+${book.imgName}}"
+										width="330px" height="400px">
+								</div>
+
+								<div class="col-md-6">
+
+
+									<p class="fs-3">[[${book.bookName}]]</p>
+									<p>
+										<span class="fw-bold">Description : </span><br>[[${book.description}]]
+									</p>
+									<p>
+										<span class="fw-bold"> Book Deatils: </span> <br> Author
+										: [[${book.author}]] <br> Category : [[${book.category}]]
+
+									</p>
+									<p class="fs-5 fw-bold">
+										Status :&nbsp; &nbsp; &nbsp; &nbsp;
+										[[${book.status}]]
+									</p>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="emp/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-4">
+				<div class="col-md-4">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Leave Apply</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form action="/emp/addLeave" method="post">
+								<div class="mb-3">
+									<label>Full Name</label> <input readonly type="text"
+										th:value="${emp.firstName+' '+emp.lastName}"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Email</label> <input readonly type="text"
+										class="form-control" th:value="${emp.email}">
+								</div>
+								<div class="mb-3">
+									<label>Manager Name</label>
+									<th:block th:if="${empService.checkAssignManager(emp.id)}">
+
+										<th:block
+											th:with="em=${empService.getAssignManagerByUserID(emp.id)}">
+
+											<th:block th:with="ma=${empService.getEmpById(em.managerId)}">
+												<input readonly type="text"
+													th:value="${ma.firstName+' '+ma.lastName}"
+													class="form-control">
+
+												<input type="hidden" th:value="${ma.id}" name="managerId">
+											</th:block>
+										</th:block>
+									</th:block>
+
+									<th:block th:unless="${empService.checkAssignManager(emp.id)}">
+										<input readonly type="text" value="Manager Not Assigned"
+											class="form-control">
+									</th:block>
+
+								</div>
+								<div class="mb-3">
+									<label>From Date</label> <input type="date" name="fromDate"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>To Date</label> <input type="date" name="toDate"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Reason</label>
+									<textarea rows="3" class="form-control" name="reason"></textarea>
+								</div>
+
+								<input type="hidden" name="empId" th:value="${emp.id}">
+
+								<th:block th:if="${empService.checkAssignManager(emp.id)}">
+									<button class="btn bg-custom text-white">Submit</button>
+								</th:block>
+								<th:block th:unless="${empService.checkAssignManager(emp.id)}">
+									<button class="btn bg-custom text-white disabled">Submit</button>
+								</th:block>
+
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-8">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Status</p>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Emp Name</th>
+										<th scope="col">From Date</th>
+										<th scope="col">To Date</th>
+										<th scope="col">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr th:each="l,c:${list}">
+										<td>[[${c.count}]]</td>
+										<td>[[${emp.firstName+' '+emp.lastName}]]</td>
+										<td>[[${l.fromDate}]]</td>
+										<td>[[${l.toDate}]]</td>
+										<td>[[${l.status}]]</td>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

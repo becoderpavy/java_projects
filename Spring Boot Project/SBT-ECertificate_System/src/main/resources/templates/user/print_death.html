@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="background-color: #f0f1f2;">
+	<div class="container p-2">
+		<div class="row">
+
+			<div class="col-md-6 offset-md-3 mt-3">
+				<div class="card paint-card">
+					<div class="text-center">
+						<i class="fa-solid fa-note-sticky fa-2x"></i>
+						<p class="text-center text-custom fs-2">Death Certificate</p>
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+
+						<div th:if="${session.errorMsg}" class="text-center">
+							<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+						</div>
+
+					</div>
+					<div class="card-body">
+						<div style="margin-left: 30px;">
+
+							<table class="table table-borderless">
+								<tr>
+									<td class="fw-bold">Name</td>
+									<td>[[${death.name}]]</td>
+								</tr>
+								<tr>
+									<td class="fw-bold">Date Of Birth</td>
+									<td>[[${death.dob}]]</td>
+								</tr>
+								<tr>
+									<td class="fw-bold">Date of Death</td>
+									<td>[[${death.deathDate}]]</td>
+								</tr>
+
+								<tr>
+									<td class="fw-bold">Age</td>
+									<td>[[${death.age}]]</td>
+								</tr>
+
+								<tr>
+									<td class="fw-bold">Gender</td>
+									<td>[[${death.gender}]]</td>
+								</tr>
+								<tr>
+									<td class="fw-bold">Place Of Death</td>
+									<td>[[${death.placeDeath}]]</td>
+								</tr>
+								<tr>
+									<td class="fw-bold">Address</td>
+									<td>[[${death.address}]]</td>
+								</tr>
+
+
+							</table>
+						</div>
+						<p class="text-center fs-4">Issued By Goverment</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center">
+			<button onclick="window.print()"
+				class="btn btn-primary col-md-3 mt-4">Print</button>
+		</div>
+	</div>
+</body>
+</html>

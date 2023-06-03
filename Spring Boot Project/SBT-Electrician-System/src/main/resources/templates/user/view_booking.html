@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-4">
+			<div class="row">
+
+				<div class="card paint-card">
+					<div class="card-body">
+						<p class="text-center fs-1 text-danger">Your Booking</p>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Sl No</th>
+									<th scope="col">Electrician Name</th>
+									<th scope="col">Contact No</th>
+									<th scope="col">Email</th>
+									<th scope="col">Booking Date</th>
+									<th scope="col">Address</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="b,c:${list}">
+									<th scope="row">[[${c.count}]]</th>
+									<th:block
+										th:with="e=${userService.getElectricianById(b.electricianId)}">
+										<td>[[${e.firstName +' '+e.lastName}]]</td>
+
+										<td>[[${e.mobNo}]]</td>
+										<td>[[${e.email}]]</td>
+									</th:block>
+
+									<td>[[${b.date}]]</td>
+									<td>[[${b.address}]]</td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

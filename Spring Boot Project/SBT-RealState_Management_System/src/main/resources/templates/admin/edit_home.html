@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="backimgs">
+			<p class="fs-1 text-center p-1 text-white">Edit Property</p>
+		</div>
+
+		<div class="container">
+			<div class="row p-2">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="fs-3 text-center">Form</p>
+							<form th:action="@{/admin/updatehome}" method="post" 
+								enctype="multipart/form-data">
+								<div class="row">
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">Title
+										</label> <input type="text" class="form-control" required
+											th:value="${home.title}" name="title">
+									</div>
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">Owner
+											Name </label> <input type="text" class="form-control" required
+											name="ownerName" th:value="${home.ownerName}">
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">Email
+										</label> <input type="text" class="form-control" required
+											th:value="${home.email}" name="email">
+									</div>
+
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">Mobile
+											No </label> <input type="text" class="form-control" name="mobNo" required
+											th:value="${home.mobNo}">
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Description
+									</label>
+									<textarea rows="3" cols="" class="form-control" required
+										name="description">[[${home.description}]]</textarea>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">Address
+										</label> <input type="text" class="form-control" name="address" required
+											th:value="${home.address}">
+									</div>
+
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">City
+										</label> <input type="text" class="form-control" name="city" required
+											th:value="${home.city}">
+									</div>
+
+								</div>
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">State
+										</label> <input type="text" class="form-control" name="state" required
+											th:value="${home.state}">
+									</div>
+
+									<div class="col">
+										<label for="exampleInputEmail1" class="form-label">Pincode
+										</label> <input type="text" class="form-control" name="pincode" required
+											th:value="${home.pincode}">
+									</div>
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Image
+									</label> <input type="file" class="form-control" name="img"> <small>uploaded
+										img : [[${home.fileName}]]</small>
+								</div>
+								<input type="hidden" name="id" th:value="${home.id}">
+
+								<button type="submit" class="btn btn-primary col-md-12">Update</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<script type="text/javascript" src="../../js/home.js"></script>
+	</section>
+</body>
+</html>

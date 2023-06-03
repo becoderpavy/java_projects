@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body style="background-color: #f4f6f9;">
+	<section>
+		<p class="fs-2 text-center">Survey Report</p>
+		<hr class="text-primary">
+		<div class="row">
+			<form th:action="@{search_report}" method="get">
+				<div class="row">
+					<div class="col text-right">
+						<label class="fw-bold">Enter Keyword</label>
+					</div>
+					<div class="col">
+						<input name="keyword" type="text" class="form-control form-control-sm">
+					</div>
+					<div class="col">
+						<button class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<hr class="text-primary">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 mt-2 " th:each="list:${slist}">
+					<div class="card text-center" 
+						style="border-top: 4px solid green; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						<div class="card-header bg-light ">[[${list.title}]]</div>
+
+						<div class="card-body ">
+							<a th:href="@{'view_one_report/'+${list.id}}" class="btn btn-primary btn-sm">View Report</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3 mt-2 " th:each="list:${survey_search}">
+					<div class="card text-center" 
+						style="border-top: 4px solid green; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						<div class="card-header bg-light ">[[${list.title}]]</div>
+
+						<div class="card-body ">
+							<a th:href="@{'view_one_report/'+${list.id}}" class="btn btn-primary btn-sm">View Report</a>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<p class="fs-2 text-center">User List</p>
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}">
+			<p class="fs-5 text-center" th:text="${session.message.content}"></p>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+		<hr class="text-primary">
+		<div class="container mycard">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card ">
+						<div class="card-header"
+							style="border-top: 3px solid #0d6efd; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+							<form th:action="@{/admin/search_user}">
+								<div class="row">
+									<div class="col-md-4 offset-3">
+										<input type="search" class="form-control" name="keyword">
+									</div>
+									<div class="col-md-4">
+										<button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+
+						<div class="card-body">
+							<table class="table table-bordered" style="height: 100px;">
+								<thead>
+									<tr>
+										<th scope="col">Name</th>
+										<th scope="col">Contact No</th>
+										<th scope="col">Role</th>
+										<th scope="col">Email</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+
+									<tr th:each="us : ${userSearch}">
+										<th scope="row">[[${us.firstName}]]</th>
+										<td>[[${us.mobNo}]]</td>
+
+										<td th:if="${us.role}=='ROLE_USER'">User</td>
+										<td th:if="${us.role} == 'ROLE_ADMIN'">Admin</td>
+
+										<td>[[${us.email}]]</td>
+										<!-- Example single danger button -->
+										<td><div class="btn-group">
+												<button type="button"
+													class="btn btn-info btn-sm dropdown-toggle"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													Action</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/viewUser/'+${us.id}}">View</a></li>
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/editUser/'+${us.id}}">Edit</a></li>
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/deleteuser/'+${us.id}}">Delete</a></li>
+													<li><hr class="dropdown-divider"></li>
+
+												</ul>
+											</div></td>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+	</section>
+</body>
+</html>

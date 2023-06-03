@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<p class="text-center fs-1">Admin Dashboard</p>
+			<div class="row p-4">
+
+				
+
+				<div class="col-md-4 ">
+					<a class="text-decoration-none bg-custom" href="addLibrary">
+						<div class="card paint-card text-light"
+							style="background-color: #04ba0a;">
+							<div class="card-header"></div>
+
+							<div class="card-body text-center">
+								<i class="fa-solid fa-circle-plus fa-2x"></i><br>
+								<p class="fs-1">Add Library</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="library">
+
+						<div class="card paint-card bg-primary text-light">
+							<div class="card-header"></div>
+							<div class="card-body text-center">
+								<i class="fa-solid fa-users fa-2x"></i><br>
+								<p class="fs-1">View Library</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 ">
+					<a class="text-decoration-none bg-custom" href="viewLib">
+						<div class="card paint-card text-light bg-warning">
+							<div class="card-header"></div>
+
+							<div class="card-body text-center">
+								<i class="fa-solid fa-circle-plus fa-2x"></i><br>
+								<p class="fs-1">Add User</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="bg-custom p-2 " style="margin-top: 290px">
+			<p class="text-center text-white">@copyright reserverd by
+				ebook.com</p>
+		</div>
+	</section>
+</body>
+</html>

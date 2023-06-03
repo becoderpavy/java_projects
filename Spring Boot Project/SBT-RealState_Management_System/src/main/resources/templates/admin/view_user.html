@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-10 offset-md-1">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="fs-1 text-center text-primary">View User Details</p>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Mobile No</th>
+										<th scope="col">Address</th>
+										<!-- <th scope="col">Action</th> -->
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="u,c:${list}">
+										<th scope="row">[[${c.count}]]</th>
+										<th scope="row">[[${u.firstName}]] [[${u.lastName}]]</th>
+										<td>[[${u.email}]]</td>
+										<td>[[${u.mobNo}]]</td>
+										<td>[[${u.address}]]</td>
+										<!-- <td><a th:href="@{'edit/'+${u.id}}"
+											class="btn btn-primary btn-sm">Edit</a> 
+											
+											<a
+											th:href="@{'deleteUser/'+${u.id}}"
+											class="btn btn-primary btn-sm">Delete</a></td> -->
+
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

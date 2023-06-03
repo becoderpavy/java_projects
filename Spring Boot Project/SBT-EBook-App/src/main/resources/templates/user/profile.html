@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-5">
+			<div class="row">
+
+
+				<div class="col-md-6 offset-md-3 ">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="fs-4 text-center">Profile Details</p>
+
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+
+							<form class="row g-3" action="updateprofile" method="post"
+								id="userRegister" novalidate>
+								<div class="col-6">
+									<label class="form-label">Full Name</label> <input type="text"
+										required name="firstName" class="form-control form-control-sm"
+										th:value="${user.firstName}">
+								</div>
+
+								<div class="col-6">
+									<label class="form-label">Last Name</label> <input type="text"
+										required name="lastName" class="form-control form-control-sm"
+										th:value="${user.lastName}">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Email</label> <input type="email"
+										readonly required th:value="${user.email }" name="email"
+										class="form-control form-control-sm">
+								</div>
+								<div class="col-md-6">
+									<label for="inputPassword4" class="form-label">Mob No</label> <input
+										required th:value="${user.mobNo }" name="mobNo" type="text"
+										class="form-control form-control-sm">
+								</div>
+
+
+
+								<div class="col-12">
+									<label for="inputAddress" class="form-label">Address</label> <input
+										required th:value="${user.address }" name="address"
+										type="text" class="form-control form-control-sm">
+								</div>
+								<div class="col-md-6">
+									<label for="inputCity" class="form-label">City</label> <input
+										required th:value="${user.city }" name="city" type="text"
+										class="form-control form-control-sm">
+								</div>
+								<div class="col-md-4">
+									<label for="inputState" class="form-label">State</label> <input
+										required th:value="${user.state }" name="state" type="text"
+										class="form-control form-control-sm">
+
+
+								</div>
+								<div class="col-md-2">
+									<label for="inputZip" class="form-label">Pin Code</label> <input
+										required th:value="${user.pincode }" name="pincode"
+										type="text" class="form-control form-control-sm" id="inputZip">
+								</div>
+								<input type="hidden" name="id" th:value="${user.id }">
+								<div class="col-12">
+									<button type="submit" class="btn btn-primary">Update</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

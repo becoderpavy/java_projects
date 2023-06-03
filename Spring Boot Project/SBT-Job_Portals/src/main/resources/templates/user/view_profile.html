@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid bg-light p-2">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<h3 class="text-center text-primary">View Profile</h3>
+
+							<div th:if="${session.succMsg}" class="text-center">
+								<h5 class="text-success fs-3" th:text="${session.succMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<h5 class="text-danger fs-3" th:text="${session.errorMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+
+
+							<form novalidate id="register" action="user_reg" method="post">
+								<div class="row mt-3">
+									<div class="col">
+										<label for="name" class="form-label">Full Name </label> <input
+											readonly th:value="${user.name}" type="text"
+											class="form-control" id="name" name="fn" required>
+									</div>
+
+									<div class="col">
+										<label for="email" class="form-label">Email ID </label> <input
+											readonly th:value="${user.email}" id="emailid" type="email"
+											class="form-control" name="em" required>
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label for="mobno" class="form-label">Mobile No </label> <input
+											readonly th:value="${user.mobNo}" type="text"
+											class="form-control" id="mobno" name="mb" required>
+									</div>
+
+									<div class="col">
+										<label for="primaryskill" class="form-label">Primary
+											Skill </label> <input type="text" class="form-control" readonly
+											th:value="${user.primarySkill}" id="primaryskill" name="pk"
+											required>
+									</div>
+								</div>
+								<div class="form-group mt-3">
+									<label for="experince" class="form-label">Experience </label> <input
+										readonly th:value="${user.experience}" type="text"
+										class="form-control" id="experince" name="ex" required>
+								</div>
+
+								<div class="form-group mt-3">
+									<label for="experince" class="form-label">Address </label> <input
+										th:value="${user.address}" readonly type="text"
+										class="form-control" name="address" required>
+								</div>
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body style="background-color: #f4f6f9;">
+	<section>
+		<p class="fs-2 text-center">User List</p>
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}">
+			<p class="fs-5 text-center" th:text="${session.message.content}"></p>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+		<hr class="text-primary">
+		<div class="container mycard">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card ">
+						<div class="card-header"
+							style="border-top: 3px solid #0d6efd; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+							<form th:action="@{/admin/search_user}">
+								<div class="row">
+									<div class="col-md-4 offset-3">
+										<input type="search" class="form-control" name="keyword">
+									</div>
+									<div class="col-md-4">
+										<button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+
+						<div class="card-body">
+							<table class="table table-bordered" style="height: 100px;">
+								<thead>
+									<tr>
+										<th scope="col">Name</th>
+										<th scope="col">Contact No</th>
+										<th scope="col">Role</th>
+										<th scope="col">Email</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="u : ${list.user}">
+										<th scope="row">[[${u.firstName}]]</th>
+										<td>[[${u.mobNo}]]</td>
+
+										<td th:if="${u.role}=='ROLE_USER'">User</td>
+										<td th:if="${u.role} == 'ROLE_ADMIN'">Admin</td>
+
+										<td>[[${u.email}]]</td>
+										<!-- Example single danger button -->
+										<td><div class="btn-group">
+												<button type="button"
+													class="btn btn-info btn-sm dropdown-toggle"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													Action</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/viewUser/'+${u.id}}">View</a></li>
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/editUser/'+${u.id}}">Edit</a></li>
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/deleteuser/'+${u.id}}">Delete</a></li>
+													<li><hr class="dropdown-divider"></li>
+
+												</ul>
+											</div></td>
+									</tr>
+									
+									
+									<tr th:each="us : ${userSearch}">
+										<th scope="row">[[${us.firstName}]]</th>
+										<td>[[${us.mobNo}]]</td>
+
+										<td th:if="${us.role}=='ROLE_USER'">User</td>
+										<td th:if="${us.role} == 'ROLE_ADMIN'">Admin</td>
+
+										<td>[[${us.email}]]</td>
+										<!-- Example single danger button -->
+										<td><div class="btn-group">
+												<button type="button"
+													class="btn btn-info btn-sm dropdown-toggle"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													Action</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/viewUser/'+${us.id}}">View</a></li>
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/editUser/'+${us.id}}">Edit</a></li>
+													<li><a class="dropdown-item"
+														th:href="@{'/admin/deleteuser/'+${us.id}}">Delete</a></li>
+													<li><hr class="dropdown-divider"></li>
+
+												</ul>
+											</div></td>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+						</div>
+						<nav aria-label="Page navigation example ">
+							<ul class="pagination justify-content-end me-3">
+
+								<li th:if="${list.pageNo!=0}" class="page-item"><a
+									class="page-link"
+									th:href="@{'/admin/view_user/'+${list.pageNo-1}}" tabindex="-1"
+									aria-disabled="true"><span aria-hidden="true">&laquo;</span></a></li>
+
+
+
+								<li th:each="i : ${#numbers.sequence(1, list.totalPages)}"
+									th:classappend="${list.pageNo==i-1 ? 'active' : ''}"
+									class="page-item"><a class="page-link"
+									th:href="@{'/admin/view_user/'+${i-1}}"><span
+										th:text="${i}"></span></a></li>
+								<li th:if="${list.pageNo+1 != totalPage}" class="page-item"><a
+									class="page-link"
+									th:href="@{'/admin/view_user/'+${list.pageNo+1}}"><span
+										aria-hidden="true">&raquo;</span></a></li>
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Button trigger modal -->
+
+
+
+
+	</section>
+</body>
+</html>

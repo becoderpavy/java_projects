@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid  p-2">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Add Book</h4>
+							<form class="form-signin" method="post" th:action="@{addBooks}"
+								enctype="multipart/form-data">
+
+								<div th:if="${session.succMsg}" class="text-center">
+									<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+									<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+								</div>
+
+								<div th:if="${session.errorMsg}" class="text-center">
+									<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+									<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Book Name</label> <input type="text" class="form-control" required
+										name="bookName">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Author</label> <input type="text" class="form-control" required
+										name="author">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Description</label>
+									<textarea rows="3" cols="" class="form-control"
+										name="description"></textarea>
+
+								</div>
+
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Category</label> <input type="text" class="form-control" required
+										name="category">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Status</label> <select class="form-control" name="status">
+										<option>--select--</option>
+										<option>Assigned</option>
+										<option>Not Assigned</option>
+									</select>
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Image</label> <input type="file" class="form-control" required
+										name="img">
+
+								</div>
+
+
+								<button class="btn bg-primary text-white col-md-12"
+									type="submit">Submit</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

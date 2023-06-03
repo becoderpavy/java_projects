@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="container p-5">
+			<p class="fs-3 text-center text-success">Admin</p>
+			<div class="row">
+				<div class="col-md-4 offset-md-2">
+					<a href="all_vehicle" class="text-decoration-none">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-car fa-3x"></i><br>
+								<p class="fs-3">All Vehicle</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a href="booking" class="text-decoration-none">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-car fa-3x"></i><br>
+								<p class="fs-3">Booking</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid  p-3">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card paint-card">
+						<div class="card-header">
+							<h4 class="form-signin-heading text-center">User Issued Book</h4>
+							<a href="/librian/status">Back</a>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fw-bold" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fw-bold" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+						</div>
+						<div class="card-body">
+
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">SL No</th>
+										<th scope="col">Image</th>
+										<th scope="col">Name</th>
+										<th scope="col">Book Details</th>
+										<th scope="col">Issue Date</th>
+										<th scope="col">Return Date</th>
+										<th scope="col">Status</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="u,c:${userList}">
+										<th scope="row">[[${c.count}]]</th>
+										<td><img th:src="@{'../../book_img/'+${u.book.imgName}}"
+											width="50px" height="50px"></td>
+
+										<td>[[${u.user.firstName}]] [[${u.user.lastName}]]</td>
+										<td>[[${u.book.bookName}]] <br> Category : 
+											[[${u.book.category.name}]]<br> Author :[[${u.book.author}]]
+										</td>
+										<td>[[${u.issueDate}]]</td>
+										<td>[[${u.returnDate}]]</td>
+										<td>[[${u.status}]]</td>
+
+
+										<td>
+											<form action="/librian/bookStatusUpdate">
+												<input type="hidden" th:value="${u.id}" name="id">
+												<div class="row">
+													<div class="col">
+														<select name="st" class="form-control form-control-sm ">
+															<option>--select--</option>
+															<option>Return</option>
+
+														</select>
+													</div>
+													<div class="col ">
+														<button class="btn btn-sm btn-primary ml-2">update</button>
+													</div>
+												</div>
+											</form>
+
+										</td>
+
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

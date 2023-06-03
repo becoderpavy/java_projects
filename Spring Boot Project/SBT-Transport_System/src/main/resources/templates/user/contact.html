@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body
+	style="height: 90vh; background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('../img/tr5.png'); background-repeat: no-repeat; background-size: cover;">
+
+	<div class="container p-5	">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<p class="fs-3">Contact Us</p>
+
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+
+						<div th:if="${session.errorMsg}" class="text-center">
+							<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+						</div>
+
+						<hr>
+						<p>
+							<i class="fa-solid fa-location-dot"></i> India
+						</p>
+						<p>
+							<i class="fa-solid fa-phone"></i> 0671 34534523
+						</p>
+						<p>
+							<i class="fa-solid fa-envelope"></i> transpot@gmail.com
+						</p>
+
+						<form action="/user/createFeedback" method="post">
+							<div class="mb-3">
+								<label class="form-label">Message</label>
+								<textarea rows="3" cols="" class="form-control" name="message"></textarea>
+							</div>
+							<input type="hidden" name="username" th:value="${user.userName}">
+							<input type="hidden" name="response" value="Pending">
+
+							<button type="submit" class="btn bg-custom text-white col-md-12">Send</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body">
+						<p class="fs-3 text-center">Response</p>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">SL No</th>
+									<th scope="col">Username</th>
+									<th scope="col">Message</th>
+									<th scope="col">Response</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr th:each="f,c:${list}">
+									<td>[[${c.count}]]</td>
+									<td>[[${f.username}]]</td>
+									<td>[[${f.message}]]</td>
+									<td>[[${f.response}]]</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+</html>

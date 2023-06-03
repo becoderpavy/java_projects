@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<h3 class="text-center text-success">Job</h3>
+			<div class="row">
+
+
+				<div class="col-md-10 offset-md-1 mt-3 jobcard p-0 ">
+
+					<div class="card paint-card">
+						<div class="card-body">
+
+							<h5 class="ml-2">[[${j.title}]]</h5>
+							<div class="row p-2">
+								<div class="col-md-3">
+									<i class="fas fa-shopping-bag text-primary"></i> Company :
+									[[${j.companyName}]]
+								</div>
+								<div class="col-md-3">
+									<i class="fas fa-shopping-bag text-primary"></i> Category :
+									[[${j.category}]]
+								</div>
+								<div class="col-md-2">
+									<i class="fas fa-map-marker-alt text-warning"></i>
+									[[${j.location}]]
+								</div>
+								<div class="col-md-4">
+									<i class="fas fa-calendar-alt text-primary"></i> Publish Date :
+									[[${j.date}]]
+								</div>
+							</div>
+							<hr>
+							<div class="p-2">
+								<p>
+									<i class="far fa-clipboard text-primary"></i>
+									[[${j.description}]] .
+								</p>
+
+							</div>
+
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

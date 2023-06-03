@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+	<section>
+		<div class="container-fluid p-2">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-header text-center font-wieight-bold">
+							<i class="fas fa-user-circle fa-2x"></i><br>View Profile
+						</div>
+
+						<div class="card-body">
+							<h3 class="text-center text-primary"></h3>
+
+							<div th:if="${session.succMsg}" class="text-center">
+								<h5 class="text-success fs-3" th:text="${session.succMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<h5 class="text-danger fs-3" th:text="${session.errorMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+
+
+
+
+							<table class="table table-borderless" >
+								<tbody>
+									<tr>
+										<td>Full Name</td>
+										<td>:</td>
+										<td>[[${user.name}]]</td>
+									</tr>
+
+									<tr>
+										<td>Email ID</td>
+										<td>:</td>
+										<td>[[${user.email}]]</td>
+									</tr>
+
+									<tr>
+										<td>Mobile No</td>
+										<td>:</td>
+										<td>[[${user.mobNo}]]</td>
+									</tr>
+
+									<tr>
+										<td>Primary Skill</td>
+										<td>:</td>
+										<td>[[${user.primarySkill}]]</td>
+									</tr>
+
+									<tr>
+										<td>Experience</td>
+										<td>:</td>
+										<td>[[${user.experience}]]</td>
+									</tr>
+
+									<tr>
+										<td>Address</td>
+										<td>:</td>
+										<td>[[${user.address}]]</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

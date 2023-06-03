@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<section>
+	<section>
+		<div class="container-fluid bg-light p-5">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<h3 class="text-center text-primary">Edit Profile</h3>
+							<form action="profileUpdate" method="post">
+								<div class="row">
+									<div class="col">
+										<label>First Name</label> <input type="text" name="firstName"
+											th:value="${emp.firstName}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Last Name</label> <input type="text" name="lastName"
+											class="form-control" th:value="${emp.lastName}">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>DOB</label> <input type="date" name="dob"
+											th:value="${emp.dob}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Mobile Number</label> <input type="text" name="mobNo"
+											th:value="${emp.mobNo}" class="form-control">
+									</div>
+
+
+								</div>
+								<div class="mt-3">
+									<label>Email ID</label> <input type="text" name="email"
+										readonly th:value="${emp.email}" class="form-control">
+								</div>
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Address</label> <input type="text" name="address"
+											th:value="${emp.address}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>City</label> <input type="text" name="city"
+											th:value="${emp.city}" class="form-control">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>State</label> <input type="text" name="state"
+											th:value="${emp.state}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Pincode</label> <input type="text" name="pincode"
+											th:value="${emp.pincode}" class="form-control">
+									</div>
+
+									<input type="hidden" name="id" th:value="${emp.id}">
+
+
+								</div>
+								<button class="btn bg-custom col-md-12 text-white mt-3">Update</button>
+
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+</html>

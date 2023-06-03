@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body
+	style="background: url('img/login.jpg'); background-repeat: no-repeat; background-size: cover;">
+	<section>
+		<div class="container-fluid p-2">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+
+					<div class="card paint-card">
+						<div class="card-header">
+							<h3 class="text-center text-primary">User Signup</h3>
+							<div th:if="${session.succMsg}" class="text-center">
+								<h5 class="text-success fs-3" th:text="${session.succMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<h5 class="text-danger fs-3" th:text="${session.errorMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+
+						</div>
+						<div class="card-body">
+
+
+
+
+							<form novalidate id="userRegister" action="createUser"
+								method="post" enctype="multipart/form-data">
+								<div class="row mt-3">
+									<div class="col">
+										<label for="name" class="form-label">Full Name </label> <input
+											type="text" class="form-control" id="name" name="name"
+											required>
+									</div>
+
+									<div class="col">
+										<label for="email" class="form-label">Email ID </label> <input
+											id="emailid" type="email" class="form-control" name="email"
+											required>
+									</div>
+									<div class="col">
+										<label for="mobno" class="form-label">Mobile No </label> <input
+											type="text" class="form-control" id="mobno" name="mobNo"
+											required>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label for="password" class="form-label">Password </label> <input
+											type="password" class="form-control" id="psw" name="password">
+									</div>
+
+									<div class="col">
+										<label for="confirmpassword" class="form-label">Confirm
+											Password </label> <input type="password" class="form-control"
+											name="comfirmPassword">
+									</div>
+									<div class="col">
+										<label for="primaryskill" class="form-label">Primary
+											Skill </label> <input type="text" class="form-control"
+											id="primaryskill" name="primarySkill" required>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label for="experince" class="form-label">Experience </label>
+										<input type="text" class="form-control" id="experince"
+											name="experience" required>
+									</div>
+									<div class="col">
+										<label for="last name" class="form-label">Upload
+											Resume </label> <input type="file" class="form-control" name="file">
+									</div>
+								</div>
+								<div class="form-group mt-2">
+									<label for="last name" class="form-label">Address </label>
+									<textarea rows="3" cols="" class="form-control" name="address"></textarea>
+								</div>
+
+
+
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" name="check"
+										id="exampleCheck1"> <label class="form-check-label"
+										for="exampleCheck1"><a href="#" data-toggle="modal"
+										data-target="#exampleModalLong" style="text-decoration: none">Agree
+											Terms & Condition</a> </label>
+								</div>
+
+								<button type="submit"
+									class="btn btn-primary col-md-6 offset-md-3">Register</button>
+								<br>
+								<div class="text-center">
+									<a href="addRecruiter" style="text-decoration: none;">Recruiter
+										Register</a>
+								</div>
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body
+	style="height: 110vh; background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../img/tr7.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-md-5 offset-md-6 mt-5">
+				<div class="card paint-card">
+					<div class="card-body">
+						<p class="fs-4 text-center">Book Your Truck</p>
+
+						<form action="/user/boookVehic" method="post">
+							<div class="row">
+								<div class="col-md-6">
+									<input required placeholder="Kilometers" name="kms" readonly
+										type="text" class="form-control form-control-sm"
+										th:value="${km}">
+
+								</div>
+
+								<div class="col-md-6">
+									<button class="btn btn-primary btn-sm disabled">Show
+										Amount</button>
+								</div>
+
+							</div>
+
+							<div class="mt-3">
+								<input required placeholder="Amount" name="amount" readonly
+									type="text" class="form-control"
+									th:value="${amt}">
+									<strong>[[${'(20  * '+ km +' Km) '}]]=[[${amt}]]</strong>
+							</div>
+
+							<div class="mt-3">
+								<label>Booking Date</label> <input required name="date"
+									type="date" class="form-control">
+							</div>
+
+
+							<div class="mt-3">
+								<label>Vehicle Name</label> <input required name="veh" readonly
+									type="text" th:value="${veh.vehicleType}" class="form-control">
+							</div>
+							
+							<input type="hidden" name="vehicleNumber" th:value="${veh.vechicleNumber}">
+							
+							<input type="hidden" name="id" th:value="${veh.id}">
+							
+							<input type="hidden" name="userName" th:value="${user.userName}">
+							
+							<input type="hidden" name="location" th:value="${user.location}">
+
+							<button type="submit"
+								class="btn bg-custom text-white col-md-12 mt-3">Book</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

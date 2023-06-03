@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-5">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<div class="text-center text-primary">
+								<i class=" fa-solid fa-circle-user fa-3x"></i>
+								<p class="fs-1 text-center ">View Profile</p>
+
+							</div>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form action="register" class="mt-2" method="post"
+								id="userRegister">
+
+
+
+								<div class="row">
+									<div class="col">
+										<label>First Name</label> <input type="text" name="firstName"
+											readonly th:value="${user.firstName}" required
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>Last Name</label> <input type="text" name="lastName"
+											readonly th:value="${user.lastName}" required
+											class="form-control form-control-sm">
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label>Email Id</label> <input type="text" name="email"
+											readonly th:value="${user.email}" required
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>Mobile No</label> <input type="text" name="mobNo"
+											readonly th:value="${user.mobNo}" required
+											class="form-control form-control-sm">
+									</div>
+								</div>
+
+								<div class="form-group mt-3">
+									<label>Address</label>
+									<textarea required rows="3" cols="" class="form-control"
+										readonly name="address">[[${user.address}]]</textarea>
+
+								</div>
+
+
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="bg-primary p-2 mt-5">
+			<p class="text-center text-white">@copyright reserverd by
+				realestate.com</p>
+		</div>
+
+
+	</section>
+</body>
+</html>

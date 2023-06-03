@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body style="background-color: #f4f6f9">
+	<section>
+		<p class="fs-2 text-center">Add New User</p>
+		<hr class="text-primary">
+		<div class="container mycard">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card"
+						style="border-top: 3px solid #0d6efd; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						<div class="card-body">
+							<form th:action="@{create_user}" method="post" id="userRegister" novalidate>
+
+								<div th:if="${session.message}"
+									th:classappend="${session.message.type}">
+									<p class="fs-5 text-center"
+										th:text="${session.message.content}"></p>
+									<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+								</div>
+
+								<div class="row">
+									<div class="col">
+										<label class="fw-bold">First Name</label> <input type="text" required
+											name="firstName" class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label class="fw-bold">Last Name</label> <input type="text" required
+											name="lastName" class="form-control form-control-sm">
+									</div>
+
+									<div class="col">
+										<label class="fw-bold">DOB</label> <input type="date" required
+											name="dob" class="form-control form-control-sm">
+									</div>
+								</div>
+								<div class="row mt-3">
+
+									<div class="col">
+										<label class="fw-bold">Mobile No</label> <input type="text" required
+											name="mobNo" class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label class="fw-bold">Email</label> <input type="text" required
+											name="email" class="form-control form-control-sm">
+									</div>
+
+									<div class="col">
+										<label class="fw-bold">User Type</label> <select name="role"
+											class="form-control form-control-sm">
+											<option value="">--Select--</option>
+											<option value="ROLE_ADMIN">Admin</option>
+											<option value="ROLE_USER">User</option>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="row mt-3">
+									<div class="col-md-4">
+										<label class="fw-bold">Password</label> <input type="password" required
+											name="password" class="form-control form-control-sm">
+									</div>
+									<!-- <div class="col-md-4">
+										<label class="fw-bold">Confirm Password</label> <input
+											type="password" name="" class="form-control form-control-sm">
+									</div> -->
+								</div>
+
+								<div class="form-group mt-3">
+									<label class="fw-bold">Address</label>
+									<textarea required rows="3" cols="" name="address" class="form-control"></textarea>
+
+								</div>
+								<div class="text-center mt-3">
+									<button class="btn btn-primary col-md-4">Add</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

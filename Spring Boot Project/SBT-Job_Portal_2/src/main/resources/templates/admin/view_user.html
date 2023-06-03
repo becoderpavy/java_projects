@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-4">
+			<div class="row">
+
+				<div class="col-md-12">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h3 class="text-center fs-1 text-success">All User</h3>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Email id</th>
+										<th scope="col">Mobile No</th>
+										<th scope="col">Primary Skill</th>
+										<th scope="col">Experience</th>
+										<th scope="col">Address</th>
+										<!-- <th scope="col">Action</th> -->
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="u,c : ${list}">
+										<td>[[${c.count}]]</td>
+										<td>[[${u.name}]]</td>
+										<td>[[${u.email}]]</td>
+										<td>[[${u.mobNo}]]</td>
+										<td>[[${u.primarySkill}]] </td>
+										<td>[[${u.experience}]]</td>
+										<td>[[${u.address}]]</td>
+										<!-- <td><a href="one_job.jsp?jid="
+										class="btn btn-sm btn-success"> Edit</a> <a
+										href="one_job.jsp?jid=" class="btn btn-sm btn-danger">
+											Delete</a></td> -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

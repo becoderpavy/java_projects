@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-2">
+			<div class="row">
+				<div class="col-md-4 offset-md-4">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<form action="register" class="mt-2" method="post"
+								id="userRegister" novalidate>
+								<h3 class="text-center text-success">Signup</h3>
+
+								<div th:if="${session.message}">
+									<p class="fs-5 text-center" th:text="${session.message}"></p>
+									<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+								</div>
+
+
+								<div class="form-group mt-3">
+									<label>Full Name</label> <input type="text" name="name"
+										class="form-control form-control-sm">
+								</div>
+
+								<div class="form-group mt-3">
+									<label>Phone Number</label> <input type="text" name="phno"
+										class="form-control form-control-sm">
+								</div>
+
+								<div class="form-group mt-3">
+									<label>Email id</label> <input type="text" name="email"
+										class="form-control form-control-sm">
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Password</label> <input type="text" name="password"
+											required id="psw" class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>Confirm Password</label> <input type="text"
+											name="confirmpassword" class="form-control form-control-sm">
+									</div>
+								</div>
+
+								<div class="form-group mt-3">
+									<label>Address</label>
+									<textarea required rows="3" cols="" class="form-control"
+										name="address"></textarea>
+
+								</div>
+
+								<div class="text-center mt-3">
+									<button class="btn btn-primary col-md-12">Register</button>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid bg-light p-1" style="margin-top: 10px;">
+			<p class="text-success text-center">@Copyright 2022 Online Car
+				Hiring System</p>
+		</div>
+
+
+	</section>
+</body>
+</html>

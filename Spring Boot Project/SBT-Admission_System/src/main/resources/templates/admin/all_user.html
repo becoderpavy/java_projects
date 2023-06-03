@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-customer fs-1">My Application
+								Status</p>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Mobile</th>
+										<th scope="col">Address</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Pabitra Das</td>
+										<td>pabitra@gmail.com</td>
+										<td>87668986</td>
+										<td>India</td>
+										<td>
+										<a href="editUser"
+											class="btn btn-sm btn-primary">Edit</a>
+										
+										<a href="#"
+											class="btn btn-sm btn-danger">Delete</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

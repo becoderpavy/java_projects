@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-2">
+			<div class="row">
+
+				<div class="col-md-6 offset-md-3 mt-3">
+					<div class="card paint-card">
+						<div class="text-center">
+							<i class="fa-solid fa-note-sticky fa-2x"></i>
+							<p class="text-center text-custom fs-2">Apply Marriage
+								Certificate</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+
+						</div>
+						<div class="card-body">
+
+							<form action="saveMarriage" method="post"
+								enctype="multipart/form-data">
+								<input type="hidden" name="userId" th:value="${user.id}">
+								<div class="row">
+									<div class="col">
+										<label>Boy Name</label> <input type="text" name="boyName"
+											required class="form-control">
+									</div>
+									<div class="col">
+										<label>DOB</label> <input type="date" name="dobBoy" required
+											class="form-control">
+									</div>
+									<div class="col">
+										<label>Age</label> <input type="number" name="boyAge" required
+											class="form-control">
+									</div>
+								</div>
+
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Girl Name</label> <input type="text" name="girlName"
+											required class="form-control">
+									</div>
+									<div class="col">
+										<label>DOB</label> <input type="date" name="dobGirl" required
+											class="form-control">
+									</div>
+									<div class="col">
+										<label>Age</label> <input type="number" name="girlAge"
+											required class="form-control">
+									</div>
+								</div>
+								<div class="mt-3">
+									<label>Boy Full Address</label>
+									<textarea rows="2" cols="" class="form-control" required
+										name="boyAddress"></textarea>
+								</div>
+								<div class="mt-3">
+									<label>Girl Full Address</label>
+									<textarea rows="2" cols="" class="form-control" required
+										name="girlAddress"></textarea>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Marriage Date</label> <input type="date" required
+											class="form-control" name="marrigeDate">
+									</div>
+
+									<div class="col">
+										<label>Proof of Document</label> <input type="file" required
+											class="form-control" name="file">
+									</div>
+								</div>
+
+								<input type="hidden" value="Review" name="status"> <input
+									type="hidden" name="certificateName" value="NA">
+								<button class="btn bg-custom text-white col-md-12 mt-3">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-custom p-2" style="margin-top: 40px">
+			<p class="text-center text-white">@copyright reserverd by
+				ecertificate.com</p>
+		</div>
+	</section>
+</body>
+</html>

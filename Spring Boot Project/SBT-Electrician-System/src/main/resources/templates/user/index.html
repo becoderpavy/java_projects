@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid paint-card">
+			<div class="col-md-8 offset-md-2 p-5 ">
+				<form th:action="@{/user/search}" method="get">
+					<div class="row">
+						<div class="col-md-9">
+							<select class="form-control" name="city" required="required">
+								<option class="text-center" value="">-- choose city --</option>
+								<option value="Mumbai">Mumbai</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Pune">Pune</option>
+								<option value="MP">MP</option>
+								<option value="UP">UP</option>
+								<option value="JK">JK</option>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<button class="btn btn-primary col-md-12">
+								<i class="fa-solid fa-magnifying-glass"></i> Search
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="container p-1">
+			<p class="text-center text-danger fs-1">Electrician</p>
+			<div class="row">
+				<div class="col-md-4 " th:each="e: ${list}">
+					<div class="card paint-card">
+
+						<div class="card-body text-center text-danger">
+							<img th:src="@{'../elcetrician_profile/'+${e.fileName}}"
+								style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid black;">
+							<p class="fs-4">[[${e.firstName}]] [[${e.lastName}]]</p>
+							<a th:href="@{'/user/viewElectrician/'+${e.id}}"
+								class="btn btn-danger">View Details</a> <a
+								th:href="@{'/user/book/'+${e.id}}" class="btn btn-danger">Book</a>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="bg-danger p-2" style="margin-top: 260px">
+			<p class="text-center text-white">@copyright reserverd by
+				electric.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

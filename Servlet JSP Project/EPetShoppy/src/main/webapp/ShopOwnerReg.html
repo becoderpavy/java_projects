@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Your Shop Name</title>
+ <!-- CSS only -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="css\bootstrap.min.css">
+<link rel="stylesheet" href="fonts\icomoon\icomoon.css">
+<link rel="stylesheet" href="css\main.css">
+
+<script src="js\jquery.js"></script>
+<script src="js\tether.min.js"></script>
+<script src="js\bootstrap.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+	
+	$("#txtfname").blur(function(){
+		str=document.getElementById("txtfname").value;
+		if(str=="")
+		{
+			document.getElementById("errFname").innerHTML="Enter Valid Name";
+		}
+		else
+		{
+			document.getElementById("errFname").innerHTML="";
+		}		
+	});
+	
+	$("#txtlname").blur(function(){
+		str=document.getElementById("txtlname").value;
+		if(str=="")
+			{
+				document.getElementById("errlname").innerHTML="Enter valid last name";
+			}
+		else
+			{
+				document.getElementById("errlname").innerHTML="";
+			}
+	});
+	
+	$("#txtsname").blur(function(){
+		str=document.getElementById("txtsname").value;
+		if(str=="")
+			{
+				document.getElementById("errsname").innerHTML="Enter valid shop name";
+			}
+		else
+			{
+				document.getElementById("errsname").innerHTML="";
+			}
+	});
+	
+	
+	$("#txtmno").on({
+		   
+		   focus:function()
+		   {
+		   	 $(this).css("background-color","#c6f7e0");
+		   },
+		   blur:function()
+		   {
+		    
+		    	mob=document.getElementById("txtmno").value;
+		   
+		    		if(mob=="")
+		    		{
+		     			$(this).css("background-color","#f5abab");
+		     			document.getElementById("errmno").innerHTML="Enter Mobile Number";
+		     			$("errmno").show(1000);
+		    		}
+		    		else if(mob!="")
+		    		{
+		     			pat=/^[6-9]{1}[0-9]{9}$/;
+		     			if(pat.test(mob))
+		     			{
+		      				$(this).css("background-color","#8ff7a9");
+		      				document.getElementById("errmno").innerHTML="";
+		      				$("errmno").hide(1000);
+		     			}
+		     			else
+		     			{
+		     				$(this).css("background-color","#f5abab");
+		     				document.getElementById("errmno").innerHTML="Enter Valid Mobile Number";
+		     				$("errmno").show(1000);
+		     			}
+		    		} 
+		    		else{
+		    			$(this).css("background-color","#8ff7a9");
+	     				document.getElementById("errmno").innerHTML=" ";
+	     				$("errmno").hide(1000);
+		    		}
+		    },
+		    keyup:function(){
+		    	mob=document.getElementById("txtmno").value;
+		    	if(isNaN(mob))
+		    	{
+		    		alert("Enter Number Only");
+		    		document.getElememntById("txtmno").value="";
+		    	}
+		    }
+	});
+		
+	
+	$("#emailid").on({
+		   
+		   focus:function()
+		   {
+		   	 $(this).css("background-color","#c6f7e0");
+		   },
+		   blur:function()
+		   {
+		    
+		    	em=document.getElementById("emailid").value;
+		   
+		    		if(em=="")
+		    		{
+		     			$(this).css("background-color","#f5abab");
+		     			document.getElementById("errEmail").innerHTML="Enter Valid Email";
+		     			$("errEmail").show(1000);
+		    		}
+		    		else if(em!="")
+		    		{
+		     			pat=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+		     			if(pat.test(em))
+		     			{
+		      				$(this).css("background-color","#8ff7a9");
+		      				document.getElementById("errEmail").innerHTML="";
+		      				$("errEmail").hide(1000);
+		     			}
+		     			else
+		     			{
+		     				$(this).css("background-color","#f5abab");
+		     				document.getElementById("errEmail").innerHTML="Enter Valid Email ID";
+		     				$("errEmail").show(1000);
+		     			}
+		    		} 
+		    		else{
+		    			$(this).css("background-color","#8ff7a9");
+	     				document.getElementById("errEmail").innerHTML=" ";
+	     				$("errEmail").hide(1000);
+		    		}
+		    } 
+	});
+	
+	
+	$("#cpwd").blur(function(){
+		str1=document.getElementById("pwd").value;
+		str2=document.getElementById("cpwd").value;
+		if(str1=="" || str2=="" || str1!=str2)
+		{
+			alert("Enter valid Password");
+    		document.getElememntById("errPs").value="";
+    		alert("Enter valid Password");
+    		document.getElememntById("errCP").value="";
+			
+		}
+		else
+		{
+			$("errPs").hide(1000);
+			document.getElementById("errPs").innerHTML="";
+			$("errCP").hide(1000);
+			document.getElementById("errCP ").innerHTML="";
+		}		
+	});
+	
+});
+
+</script>
+
+</head>
+<body>
+
+<!-- BEGIN .app-wrap -->
+		<div class="app-wrap">
+			<!-- BEGIN .app-heading -->
+			<header class="app-header">
+				<div class="container-fluid">
+					<div class="row gutters">
+						<div class="col-xl-7 col-lg-7 col-md-6 col-sm-7 col-4">
+							<img src="images/logo.png" alt="logo here" height="50">
+						</div> 
+						    <ul class="header-actions">
+								<li><a href="">Home</a></li>
+								<li><a href="">About</a></li>
+								<li><a href="">Breeds</a></li>
+								<li><a href="">Login</a></li>
+								<li><a href="">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+			</header>
+			<!-- END: .app-heading -->
+			<div class="container">
+			<div class="login-screen row align-items-center">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<form action= ShopOwnerReg.jsp method=post>
+						<div class="login-container">
+							<div class="row no-gutters">
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+									<div class="login-box">
+										<h1>Register Yourself</h1>
+										<p> For all pet care taker and pet lovers</p>				
+										<div class="form-group">
+			    							<label for="first name" class="form-label">First Name:</label> 
+											<input type="text" class="form-control" id="txtfname" name="txtfname" placeholder="Enter your first name">
+											<small id="errFname" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">Last Name:</label> 
+											<input type="text" class="form-control" id="txtlname" name="txtlname" placeholder="Enter your last name">
+											<small id="errlname" class="form-text text-muted"></small>
+										</div>
+										
+										<div class="form-group">
+											<label for="last name" class="form-label">Shop Name:</label> 
+											<input type="text" class="form-control" id="txtsname" name="txtsname" placeholder="Enter your pet-shop name">
+											<small id="errsname" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">Email ID.:</label> 
+											<input type="text" class="form-control" id="emailid" name="emailid" placeholder="Enter your email id">
+											<small id="errEmail" class="form-text text-muted">we'll never share your Email with anyone else.</small>				
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">Mobile No.:</label> 
+											<input type="text" class="form-control" id="txtmno" name="txtmno" placeholder="Enter your mobile number">
+											<small id="errmno" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="Address" class="form-label">Enter Your Address</label>
+			    							<textarea class="form-control" id="address" name="address" rows="3"></textarea>
+			    						</div>
+			    
+			    						<div class="form-group">
+			    							<label for="last name" class="form-label">City:</label> 
+											<input type="text" class="form-control" id="city" name="city" placeholder="Enter your city name">
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">State:</label> 
+											<input type="text" class="form-control" id="state" name="state" placeholder="Enter your state name">
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">Password:</label> 
+											<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter your password">
+											<small id="errPs" class="form-text text-muted"></small>
+										</div>
+				
+										<div class="form-group">
+											<label for="last name" class="form-label">Confirm Password:</label> 
+											<input type="password" class="form-control" id="cpwd" name="cpwd" placeholder="Re-enter your pwd">
+											<small id="errCP" class="form-text text-muted"></small>
+										</div>
+											<button type="submit" class="btn btn-primary">Register</button>
+											
+									</div>
+								</div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+									<div class="login-slider">
+									<img src="images/reg_img.png" width="500" height="450 "></div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+			<!-- BEGIN .main-footer -->
+			<footer class="main-footer fixed-btm">
+				Copyright Shruti Shiradwade MCA Mini Project 2021.
+			</footer>
+			<!-- END: .main-footer -->
+		</div>
+		<!-- END: .app-wrap -->
+
+</body>
+</html>

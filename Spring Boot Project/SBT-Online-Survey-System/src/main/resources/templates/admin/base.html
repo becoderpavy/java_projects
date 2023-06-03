@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+	integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" th:href="@{/css/admincss.css}">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<style type="text/css">
+.paint-card {
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+}
+.error {
+	color: red;
+}
+</style>
+</style>
+</head>
+<body>
+	<!-- left sidebar -->
+
+	<!--===================
+        Header
+        =======================-->
+
+	<header class="header">
+		<nav
+			class="navbar navbar-toggleable-md navbar-light pt-0 pb-0 bg-primary">
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand p-0 mr-5" href="#"><span
+				class="text-white">Online Survey Taker</span></a>
+			<div class="float-left">
+				<a href="#" class="button-left"><span class="fa fa-fw fa-bars "></span></a>
+			</div>
+			<div class="collapse navbar-collapse flex-row-reverse"
+				id="navbarNavDropdown">
+				<ul class="navbar-nav">
+
+
+					<li class="nav-item dropdown  user-menu"><a
+						class="nav-link dropdown-toggle" href="http://example.com"
+						id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="fas fa-user-circle"></i> <span class="hidden-xs">[[${user.firstName}]]
+								[[${user.lastName}]]</span>
+					</a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{aviewProfile}">View Profile</a> <!-- <a
+								class="dropdown-item" href="#">Edit Profile</a> <a
+								class="dropdown-item" href="#">Change Password</a> -->
+						</div></li>
+					<li class="nav-item dropdown  user-menu"><a
+						class="nav-link dropdown-toggle" href="/logout"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="fas fa-sign-out-alt text-white"></i>
+					</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 p-0">
+				<div class="main">
+					<aside>
+						<div class="sidebar left ">
+							<div class="user-panel">
+								<div class="pull-left image">
+									<img src="/img/add.png" class="rounded-circle" alt="User Image">
+								</div>
+								<div class="pull-left info">
+									<p>[[${user.firstName}]] [[${user.lastName}]]</p>
+									<a href="#"><i class="fa fa-circle text-success"></i>
+										Online</a>
+								</div>
+							</div>
+							<ul class="list-sidebar bg-defoult ">
+								<li><a th:href="@{/admin/home}"><i
+										class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
+								</a></li>
+
+								<li><a href="#" data-toggle="collapse"
+									data-target="#dashboard" class="collapsed active"> <i
+										class="fas fa-user"></i> <span class="nav-label"> User
+									</span> <span class="fa fa-chevron-left pull-right"></span>
+								</a>
+									<ul class="sub-menu collapse" id="dashboard">
+										<li class="active"><a th:href="@{/admin/add_user}">Add</a></li>
+										<li><a th:href="@{/admin/view_user/0}">View</a></li>
+									</ul></li>
+
+								<li><a href="#" data-toggle="collapse"
+									data-target="#products" class="collapsed active"> <i
+										class="fa fa-bar-chart-o"></i> <span class="nav-label">Survey</span>
+										<span class="fa fa-chevron-left pull-right"></span>
+								</a>
+									<ul class="sub-menu collapse" id="products">
+										<li class="active"><a th:href="@{/admin/add_survey}">Add
+												New</a></li>
+										<li><a th:href="@{/admin/view_survey}">View</a></li>
+
+									</ul>
+								<li><a th:href="@{/admin/survey_report}"><i class="fa fa-pie-chart"></i>
+										<span class="nav-label">Survey Report</span> </a></li>
+
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div th:replace="${content}"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- left side bar -->
+	<div class="container-fluid bg-primary p-1">
+		<p class="text-white text-center">@Copyright 2021 Online Survey
+			System</p>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+
+	<script type="text/javascript" src="../js/user_script.js"></script>
+	
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

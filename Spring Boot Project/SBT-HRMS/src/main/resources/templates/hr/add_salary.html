@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="hr/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="card paint-card" style="height: 500px">
+
+
+						<div class="card-header text-center fs-5">Add Salary</div>
+
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+
+						<div th:if="${session.errorMsg}" class="text-center">
+							<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+						</div>
+						<div class="card-body">
+							<form action="/hr/searchEmp" method="get">
+								<div class="row mt-3">
+									<div class="col-md-9">
+										<input type="text" required name="empid" class="form-control"
+											placeholder="Enter Emp Id">
+									</div>
+
+									<div class="col">
+										<button class="btn btn-primary bnt-sm">Search</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div class="card-body" th:if="${check=='yes'}">
+							<form action="/hr/updateSalary" method="post"
+								>
+
+								<input type="hidden" name="id" th:value="${empxy.id}">
+								<div class="row">
+									<div class="col">
+
+										<label>Emp Id</label> <input type="text" name="empId"
+											th:value="${empxy.empId}" readonly="readonly"
+											class="form-control form-control-sm">
+									</div>
+
+									<div class="col">
+										<label>Joining Date</label> <input type="date"
+											th:value="${empxy.joiningDate}" readonly name="joiningDate"
+											class="form-control form-control-sm">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>First Name</label> <input type="text" name="firstName"
+											readonly th:value="${empxy.firstName}"
+											class="form-control form-control-sm">
+									</div>
+
+									<div class="col">
+										<label>Last Name</label> <input type="text" name="lastName"
+											readonly th:value="${empxy.lastName}"
+											class="form-control form-control-sm">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+
+
+									<div class="col">
+										<label>Mobile Number</label> <input type="text" name="mobNo"
+											readonly th:value="${empxy.mobNo}"
+											class="form-control form-control-sm">
+
+									</div>
+									<div class="col">
+										<label>Email ID</label> <input type="text" name="email"
+											readonly th:value="${empxy.email}"
+											class="form-control form-control-sm">
+									</div>
+
+								</div>
+
+								<div class="col mt-3">
+									<label>Salary</label> <input type="number" name="salary" required
+										th:value="${empxy.salary}"
+										class="form-control form-control-sm">
+								</div>
+
+
+
+
+
+
+								<button class="btn bg-primary col-md-12 text-white mt-3">Update</button>
+
+							</form>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

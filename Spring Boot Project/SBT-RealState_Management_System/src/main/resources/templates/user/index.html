@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid backimg">
+			<div class="col-md-8 offset-md-2 p-5">
+				<form th:action="@{/user/search}" method="get">
+					<div class="row">
+						<div class="col-md-9">
+							<select class="form-control" name="city">
+								<option class="text-center">-- choose city --</option>
+								<option value="Mumbai">Mumbai</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Gujurat">Gujurat</option>
+								<option value="Punjab">Punjab</option>
+								<option value="Pune">Pune</option>
+								<option value="Huydrabad">Huydrabad</option>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<button class="btn btn-primary col-md-12">
+								<i class="fa-solid fa-magnifying-glass"></i> Search
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="container ">
+
+			<div class="row p-3">
+				<p class="fs-1 text-center">All Real Estate</p>
+				<div class="col-md-4" th:each="h:${list}">
+					<div class="card paint-card mt-3">
+						<div class="card-body">
+							<img alt="" th:src="@{'../home_img/'+${h.fileName}}" width="100%"
+								height="200px">
+							<div class="text-center">
+								<p>[[${h.title}]]</p>
+								<a th:href="@{'viewrealState/'+${h.id}}" class="btn btn-danger">View
+									Details</a> <a href="#" class="btn btn-danger"><i
+									class="fa-solid fa-location-dot"></i> [[${h.city}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-4" th:each="h:${slist}">
+					<div class="card paint-card mt-3">
+						<div class="card-body">
+							<img alt="" th:src="@{'../home_img/'+${h.fileName}}" width="100%"
+								height="200px">
+							<div class="text-center">
+								<p>[[${h.title}]]</p>
+								<a th:href="@{'viewrealState/'+${h.id}}" class="btn btn-danger">View
+									Details</a> <a href="#" class="btn btn-danger"><i
+									class="fa-solid fa-location-dot"></i> [[${h.city}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		<!-- <div class="text-center">
+			<div class="row">
+				<div class="col-md-2 offset-md-3 text-right">Total Elements :
+					4</div>
+				<div class="col-md-6">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div> -->
+
+		<div class="bg-primary p-2">
+			<p class="text-center text-white">@copyright reserverd by
+				realestate.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

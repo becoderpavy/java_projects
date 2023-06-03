@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body style="background-color: #f4f6f9;">
+	<section>
+		<p class="fs-2 text-center">View Survey List</p>
+		<hr class="text-primary">
+		<div class="container mycard">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card ">
+						<div class="card-header"
+							style="border-top: 3px solid #0d6efd; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+							<form th:action="@{search_survey}" method="get">
+								<div class="row">
+									<div class="col-md-4 offset-3">
+										<input name="keyword" type="search" class="form-control">
+									</div>
+									<div class="col-md-4">
+										<button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+
+						<div class="card-body">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">Title</th>
+										<th scope="col">Description</th>
+										<th scope="col">Start Date</th>
+										<th scope="col">End Date</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="s :${list}">
+										<th scope="row">[[${s.title}]]</th>
+										<td>[[${s.description}]]</td>
+										<td>[[${s.startDate}]]</td>
+										<td>[[${s.endDate}]]</td>
+										<!-- Example single danger button -->
+										<td><div class="btn-group">
+												<button type="button"
+													class="btn btn-info btn-sm dropdown-toggle"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													Action</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" th:href="@{'/admin/view_one_survey/'+${s.id}}">View</a></li>
+													<!-- <li><a class="dropdown-item" href="#">Edit</a></li>
+													<li><a class="dropdown-item" href="#">Delete</a></li> -->
+													<li><hr class="dropdown-divider"></li>
+
+												</ul>
+											</div></td>
+									</tr>
+									
+									<tr th:each="s :${survey_search}">
+										<th scope="row">[[${s.title}]]</th>
+										<td>[[${s.description}]]</td>
+										<td>[[${s.startDate}]]</td>
+										<td>[[${s.endDate}]]</td>
+										<!-- Example single danger button -->
+										<td><div class="btn-group">
+												<button type="button"
+													class="btn btn-info btn-sm dropdown-toggle"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													Action</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" th:href="@{'/admin/view_one_survey/'+${s.id}}">View</a></li>
+													<!-- <li><a class="dropdown-item" href="#">Edit</a></li>
+													<li><a class="dropdown-item" href="#">Delete</a></li> -->
+													<li><hr class="dropdown-divider"></li>
+
+												</ul>
+											</div></td>
+									</tr>
+									
+									
+								</tbody>
+							</table>
+						</div>
+						<!-- <nav aria-label="Page navigation example ">
+							<ul class="pagination justify-content-end me-3">
+								<li class="page-item disabled"><a class="page-link"
+									href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">Next</a></li>
+							</ul>
+						</nav> -->
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+	</section>
+</body>
+</html>

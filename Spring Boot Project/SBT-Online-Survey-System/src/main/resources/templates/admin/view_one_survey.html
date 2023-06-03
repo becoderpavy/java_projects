@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body style="background-color: #f4f6f9;">
+
+	<div class="container">
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}">
+			<p class="fs-5 text-center" th:text="${session.message.content}"></p>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+		<div class="row">
+
+			<p class="fs-2 text-center">View Survey</p>
+			<hr class="text-primary">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header text-center"
+						style="border-top: 3px solid #0d6efd; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						Survey Details</div>
+
+					<div class="card-body">
+						<p>
+							Title : <span class="fw-bold">[[${survey.title}]]</span>
+						</p>
+
+						<p>
+							Description :<br> [[${survey.description}]]
+						</p>
+
+						<p>
+							Start Date : <span class="fw-bold">[[${survey.startDate}]]</span>
+						</p>
+
+						<p>
+							End Date : <span class="fw-bold">[[${survey.endDate}]]</span>
+						</p>
+						<p>
+							Have Taken :<span class="fw-bold"> 0</span>
+						</p>
+
+
+
+					</div>
+					<div class="card-footer" style="border-top: 1px solid #0d6efd;"></div>
+
+				</div>
+			</div>
+
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header text-center"
+						style="border-top: 2px solid green; border-top-left-radius: 3px; border-top-right-radius: 3px;">
+						<p class="fw-bold">Survey Question</p>
+						<button class="btn btn-success" data-bs-toggle="modal"
+							data-bs-target="#exampleModal">Add</button>
+					</div>
+
+					<div class="card-body p-0">
+						<div th:each="list : ${qlist} " class="card mt-2">
+							<div class="card-body">
+								<p>[[${list.question}]] ?</p>
+
+								<div class="form-group">
+									<div class="form-check">
+										
+											
+											1)
+										<label class=" me-2">
+											[[${list.firstAns}]] </label>
+											
+											2)
+										<label class=" me-2" >
+											[[${list.secondAns}]] </label>
+											
+											3)
+										<label class="me-2" >
+											[[${list.thirdAns}]] </label> 
+											
+											4)
+										<label class="me-2">
+											[[${list.fourthAns}]] </label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- <div class="card mt-2">
+							<div class="card-body">
+								<p>What is java ?</p>
+
+								<div class="form-group">
+									<div class="form-check">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault1"> <label
+											class="form-check-label" for="flexRadioDefault1">
+											Procedure </label><br> <input class="form-check-input"
+											type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										<label class="form-check-label" for="flexRadioDefault1">
+											Procedure </label><br> <input class="form-check-input"
+											type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										<label class="form-check-label" for="flexRadioDefault1">
+											Procedure </label>
+									</div>
+								</div>
+
+							</div>
+						</div> -->
+
+
+
+
+
+					</div>
+					<div class="card-footer" style="border-top: 1px solid #0d6efd;"></div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add Survey
+						Question</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form th:action="@{/admin/addQuestion}" method="post">
+						<input type="hidden" th:value="${survey.id}" name="surveyId">
+						<div class="form-group">
+							<label>Enter Question</label>
+							<textarea name="question" rows="4" cols="" class="form-control"></textarea>
+						</div>
+
+						<div class="form-group">
+							<label>Enter Answer</label> <input type="text" name="firstAns"
+								class="form-control mt-1"> <input type="text"
+								name="secondAns" class="form-control mt-1"> <input
+								type="text" name="thirdAns" class="form-control mt-1"> <input
+								type="text" name="fourthAns" class="form-control mt-1">
+						</div>
+
+						<button class="btn btn-primary">Add</button>
+					</form>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

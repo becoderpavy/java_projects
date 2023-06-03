@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body
+	style="height: 90vh; background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('../img/tr5.png'); background-repeat: no-repeat; background-size: cover;">
+
+	<div class="container-fluid p-1">
+		<div class="col-md-12">
+			<div class="card paint-card">
+				<div class="card-body">
+					<p class="fs-4 text-center">Truck Details</p>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Sl No</th>
+								<th scope="col">Img</th>
+								<th scope="col">Vehicle Number</th>
+								<th scope="col">Vechicle Type</th>
+								<th scope="col">Location</th>
+								<th scope="col">Availability</th>
+								<th scope="col">Insurance Status</th>
+								<th scope="col">Description</th>
+								<th scope="col">Owner Name</th>
+								<th scope="col">Contact No</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="v,c:${list}">
+								<td>[[${c.count}]]</td>
+								<td><img alt="" th:src="@{'../veh_img/'+${v.img}}"
+									width="50px" height="50px"></td>
+								<td>[[${v.vechicleNumber}]]</td>
+								<td>[[${v.vehicleType}]]</td>
+								<td>[[${v.location}]]</td>
+								<td>[[${v.availability}]]</td>
+								<td>[[${v.insuranceStatus}]]</td>
+								<td>[[${v.description}]]</td>
+								<td>[[${v.ownerName}]]</td>
+								<td>[[${v.contactNo}]]</td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

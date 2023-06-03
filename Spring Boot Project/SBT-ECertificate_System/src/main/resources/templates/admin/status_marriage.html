@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-customer fs-1">Marriage
+								Certificate Status</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Boy Name</th>
+										<th scope="col">Girl Name</th>
+										<th scope="col">Marrige Date</th>
+										<th scope="col">Status</th>
+										<th scope="col">Certificate</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="m,c:${list}">
+										<td>[[${c.count}]]</td>
+										<td>[[${m.boyName}]]</td>
+										<td>[[${m.girlName}]]</td>
+										<td>[[${m.marrigeDate}]]</td>
+										<td>[[${m.status}]]</td>
+										<td>Downlaod</td>
+										<td><a th:href="@{'viewMarriage/'+${m.id}}"
+											class="btn btn-sm bg-custom text-white">View</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

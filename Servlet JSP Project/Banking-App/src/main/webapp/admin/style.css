@@ -1,0 +1,72 @@
+.bg-custom {
+	background-color: #383582;
+}
+
+.sidebar {
+	margin: 0;
+	padding: 0;
+	background-color:#383582 /* #16017d  #f1f1f1 */;
+	height: 100%;
+	position: fixed;
+}
+
+.sidebar .dropdown-menu{
+	background-color: blue;
+}
+
+.sidebar a {
+	display: block;
+	color:white;
+
+	padding: 12px;
+	text-decoration: none;
+	padding: 16px;
+}
+
+/* .sidebar a.active {
+	background-color: White;
+	color: #16017d;
+} */
+.sidebar a:hover /* :not(.active) */ {
+	background-color: white;
+	color: #16017d;
+}
+
+div.content {
+	margin-left: 200px;
+	padding: 1px 16px;
+	height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+	.sidebar {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	.sidebar a {
+		float: left;
+	}
+	div.content {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.sidebar a {
+		text-align: center;
+		float: none;
+	}
+}
+
+@media (min-width: 768px) {
+.navbar-brand.abs
+    {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+    }
+}
+
+

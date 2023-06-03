@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<p class="fs-1 text-center">Admin Dashboard</p>
+
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-3 offset-md-3 mt-3">
+					<a th:href="@{/admin/addFaculity}"
+						class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-chalkboard-user fa-2x"></i> <br>
+								<p class="fs-2">Add Faculity</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-3">
+					<a th:href="@{/admin/viewFaculity}"
+						class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-chalkboard-user fa-2x"></i> <br>
+								<p class="fs-2">View Faculity</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-md-3 offset-md-3 mt-3">
+					<a th:href="@{/admin/addStudent}"
+						class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-user-plus fa-2x"></i> <br>
+								<p class="fs-2">Add Student</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-3">
+					<a th:href="@{/admin/viewStudent}"
+						class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-user-plus fa-2x"></i> <br>
+								<p class="fs-2">View Student</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+
+
+		<div class="bg-success p-2" style="margin-top: 300px">
+			<p class="text-center text-white">@copyright reserverd by
+				studentportal.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

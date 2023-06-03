@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="hr/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="card paint-card">
+
+
+						<div class="card-header text-center fs-5">Add Project</div>
+
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+
+						<div th:if="${session.errorMsg}" class="text-center">
+							<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+						</div>
+						<div class="card-body">
+							<form action="/hr/createProject" method="post">
+								<div class="row mt-3">
+									<div class="col">
+										<label>Project Name</label> <input type="text" required
+											name="projectName" class="form-control form-control-sm">
+									</div>
+
+									<div class="col">
+										<label>Project Type</label> <input type="text" required
+											name="projectType" class="form-control form-control-sm">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Manager</label> <select name="manager" required
+											class="form-control form-control-sm">
+											<option>-- select --</option>
+											<option th:each="m:${manager}"
+												th:value="${m.firstName + m.lastName}">[[${m.firstName
+												+ m.lastName}]]</option>
+
+										</select>
+									</div>
+
+									<div class="col">
+										<label>Devloping Platform</label> <input type="text" required
+											name="devlopingPlatform" class="form-control form-control-sm">
+									</div>
+
+
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label> Technology</label> <input type="text" required
+											name="technology" class="form-control form-control-sm">
+									</div>
+
+								</div>
+
+								<div class="col mt-3">
+									<label>Description</label>
+									<textarea name="description" rows="3" class="form-control" required
+										cols=""></textarea>
+								</div>
+
+
+
+								<button class="btn bg-primary col-md-12 text-white mt-3">Submit</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

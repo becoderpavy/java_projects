@@ -1,0 +1,53 @@
+.bg-color {
+	background-color: #4a148c;
+}
+
+.backimg {
+	background: url("../img/admin_img.png");
+	height: 80vh;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.navbar .nav-item .nav-link {
+	font-size: 20px;
+	color: white;
+}
+
+.navbar .nav-item:hover .nav-link {
+	background: white;
+	color: black;
+	border-radius: 10px;
+}
+
+.backimgs {
+	background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)),
+		url("../img/job5.jpg");
+	height: 20vh;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+.jobcard:hover {
+	/*  transform: scale(1.01); */
+	/*box-shadow: 0 0 5px rgba(33, 33, 33, .2);
+	cursor: pointer; */
+	/* box-shadow: 0 5px  5px rgba(0,0,0,0.15);
+   */
+	position: relative;
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.jobcard a {
+	text-decoration: none;
+	color: black;
+}
+
+.jobcard a:hover {
+	text-decoration: none;
+	color: black;
+}

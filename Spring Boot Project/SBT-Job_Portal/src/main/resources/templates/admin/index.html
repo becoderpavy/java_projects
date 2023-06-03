@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+
+		<div class="text-center">
+			<img alt="" src="../img/admin_img.png"
+				style="width: 100%; height: 50vh">
+		</div>
+
+		<div class="container">
+			<div class="row p-5">
+				<div class="col-md-4">
+					<a href="addRecruiter" style="text-decoration: none;">
+						<div class="card paint-card">
+							<div class="card-body text-center ">
+								<i class="fas fa-user-circle fa-3x text-success"></i><br>
+								<h4>Add Admin</h4>
+								-----------
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a href="viewRecruiter" style="text-decoration: none;">
+						<div class="card paint-card">
+							<div class="card-body text-center ">
+								<i class="fas fa-user-circle fa-3x text-success"></i><br>
+								<h4>View Recruiter</h4>
+								-----------
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-md-4">
+					<a href="viewUser" style="text-decoration: none;">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fas fa-user-circle fa-3x text-success"></i><br>
+								<h4>User</h4>
+								-----------
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+		<div class="bg-success p-2">
+			<p class="text-center text-white">@copyright reserverd by
+				findjob.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

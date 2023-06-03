@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body style="background-color: #f0f1f2;">
+	<section>
+		<div class="container p-2">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-header text-center">
+							<i class="fa-solid fa-circle-user fa-2x"></i>
+							<h4 class="text-center">Profile</h4>
+						</div>
+						<div class="card-body">
+
+							<table class="table table-borderless">
+								<tr class="p-3">
+									<td class="font-weight-bold">First Name</td>
+									<td>:</td>
+									<td>[[${user.firstName}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Middle Name</td>
+									<td>:</td>
+									<td>[[${user.middleName}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Last Name</td>
+									<td>:</td>
+									<td>[[${user.lastName}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Course</td>
+									<td>:</td>
+									<td>[[${user.course}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Gender</td>
+									<td>:</td>
+									<td>[[${user.gender}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Contact No</td>
+									<td>:</td>
+									<td>[[${user.contactNo}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Address</td>
+									<td>:</td>
+									<td>[[${user.address}]]</td>
+								</tr>
+								<tr class="p-3">
+									<td class="font-weight-bold">Email</td>
+									<td>:</td>
+									<td>[[${user.email}]]</td>
+								</tr>
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+</body>
+</html>

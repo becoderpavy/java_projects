@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="backimgs justify-content-center p-5">
+
+			<form th:action="@{/user/search}" method="post">
+				<div class="form-row">
+					<div class="form-group col-md-4 offset-md-1">
+						<select name="cn" class="custom-select " required
+							id="inlineFormCustomSelectPref">
+							<option value="">company name</option>
+							<option th:each="cn:${clist}" th:value="${cn.companyName}">[[${cn.companyName}]]</option>
+
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<select name="lo" class="custom-select " required
+							id="inlineFormCustomSelectPref">
+							<option value="">Location...</option>
+							<option value="Banglore">Banglore</option>
+							<option value="Chennai">Chennai</option>
+							<option value="Hydrabad">Hydrabad</option>
+							<option value="Bhubaneswar">Bhubaneswar</option>
+							<option value="Delhi">Delhi</option>
+
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<button class="btn btn-primary btn-lg">Search</button>
+					</div>
+
+				</div>
+			</form>
+
+		</div>
+
+		<div class="container">
+			<h3 class="text-center text-primary">Jobs</h3>
+			<div class="text-center" th:if="${list.empty}">
+
+				<h4 class="text-center text-danger">Jobs not available</h4>
+			</div>
+			<div class="row">
+
+				<th:block th:if="${!list.empty}">
+
+					<div class="col-md-10 offset-md-1 mt-3 jobcard p-0 "
+						th:each="j:${list}">
+						<a th:href="@{'viewJob/'+${j.id}}">
+							<div class="card paint-card">
+								<div class="card-body">
+
+									<h5 class="ml-2">[[${j.title}]]</h5>
+									<div class="row p-2">
+										<div class="col-md-3">
+											<i class="fa-solid fa-building text-primary"></i> Company :
+											[[${j.companyName}]]
+										</div>
+										<div class="col-md-3">
+											<i class="fas fa-shopping-bag text-primary"></i> Category :
+											[[${j.category}]]
+										</div>
+										<div class="col-md-2">
+											<i class="fas fa-map-marker-alt text-warning"></i>
+											[[${j.location}]]
+										</div>
+										<div class="col-md-4">
+											<i class="fas fa-calendar-alt text-primary"></i> Publish Date
+											: [[${j.date}]]
+										</div>
+									</div>
+									<div class="p-2">
+										<p th:if="${#strings.length(j.description)>150}">
+											<i class="far fa-clipboard text-primary"></i>
+											[[${#strings.substring(j.description,0,150)}]] ...<span
+												class="text-primary">Read more</span>
+										</p>
+
+										<p th:if="${#strings.length(j.description)<150}">
+											<i class="far fa-clipboard text-primary"></i>
+											[[${j.description}]] .<span class="text-primary"></span>
+										</p>
+
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</th:block>
+
+
+
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<section>
+		<div class="container mt-5 p-1 ">
+			<div class="row">
+				<div class="col-md-4 offset-md-4">
+					<div class="card paint-card">
+						<div class="card-body">
+
+
+							<form th:action="@{/login}" class="mt-4" method="post">
+								<h3 class="text-center text-success">Login</h3>
+								<div th:if="${param.error}" class="alert alert-danger">
+									<p class="text-center">Invalid Email & Password</p>
+								</div>
+								<div th:if="${param.logout}" class="alert alert-success">
+									Logout Sucessfully</div>
+								<div class="form-group">
+									<label>Enter Email</label> <input type="email" name="username"
+										required class="form-control">
+								</div>
+								<div class="form-group mt-2">
+									<label>Enter Password</label> <input type="password" required
+										name="password" class="form-control">
+								</div>
+								<div class="text-center mt-3">
+									<button class="btn btn-primary col-md-12">Login</button>
+								</div>
+							</form>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid bg-light p-1" style="margin-top: 200px;">
+			<p class="text-success text-center">@Copyright 2022 Online Car Hiring
+				System</p>
+		</div>
+
+
+	</section>
+</body>
+</html>

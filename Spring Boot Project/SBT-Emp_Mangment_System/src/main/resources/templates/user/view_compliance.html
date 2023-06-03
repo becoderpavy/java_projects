@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-4">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Compliance Status</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">RL Type</th>
+										
+										<th scope="col">Department</th>
+										<th scope="col">Status</th>
+
+										<th scope="col">Comments</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="e,c:${list}">
+										<td>[[${c.count}]]</td>
+										<th:block
+											th:with="s=${complianceService.getRLById(e.complianceId)}">
+											<td>[[${s.rlType}]]</td>
+											<td>[[${s.status}]]</td>
+											<td>[[${s.department}]]</td>
+										</th:block>
+										<td>[[${e.comments}]]</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

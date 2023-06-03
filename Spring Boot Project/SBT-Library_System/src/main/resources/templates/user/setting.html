@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<p class="text-center fs-1">Settings</p>
+			<div class="row p-4">
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="password">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-circle-plus fa-2x"></i><br>
+								<p class="fs-1">Change Password</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="profile">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-users fa-2x"></i><br>
+								<p class="fs-1">My Profile</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="orders">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-user fa-2x"></i><br>
+								<p class="fs-1">Orders</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

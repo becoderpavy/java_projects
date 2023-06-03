@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="emp/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="caontainer p-4">
+			<div class="row">
+				<div class="col-md-9 offset-md-1">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Project Status</p>
+
+
+							<div class="bg-custom text-white p-2 mt-3">
+								<i class="fa-solid fa-circle-user fa-2x"></i> <span
+									class="fs-4 ms-2">[[${manager.firstName+'
+									'+manager.lastName}]] (Manager)</span>
+							</div>
+
+							<div class=" text-white p-2"
+								style="overflow-y: scroll; display: flex; flex-direction: column-reverse; height: 330px; background-color: #f7efda;">
+
+								<th:block th:each="s:${projectStatusList}">
+									<div th:if="${s.messageUser=='Emp'}">
+										<p class="text-end me-5  text-dark fs-5">
+											<span style="background-color: white"> [[${s.status}]]</span>
+										</p>
+									</div>
+									<div th:if="${s.messageUser=='Manager'}">
+										<p class="text-start ms-5  text-dark fs-5">
+											<span style="background-color: white">[[${s.status}]]</span>
+										</p>
+									</div>
+
+								</th:block>
+
+							</div>
+							<div style="margin-top: 0">
+								<form action="/emp/projectStatusUpdate" method="post">
+
+									<input type="hidden" th:value="${emp.id}" name="userId">
+
+									<input type="hidden" th:value="${manager.id}" name="managerId">
+
+									<input type="hidden" th:value="${projectDetails.id}"
+										name="projectId"> <input type="hidden" value="Emp"
+										name="messageUser">
+									<div class="row mt-2">
+										<div class="col-md-9">
+
+											<input type="text" name="status" class="form-control"
+												required placeholder="Enter Message">
+
+										</div>
+
+										<div class="col-md-3">
+											<button class="btn bg-custom text-white col-md-12">
+												<i class="fa-solid fa-circle-chevron-right"></i> Send
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</section>
+</body>
+</html>

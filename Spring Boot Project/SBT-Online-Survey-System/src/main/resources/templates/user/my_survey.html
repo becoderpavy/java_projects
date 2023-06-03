@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+		<p class="fs-2 text-center">My Survey</p>
+		
+		<hr class="text-primary">
+		<div class="container">
+			<div class="row">
+				<div th:each="s:${mylist}" class="col-md-3 mt-2 ">
+					<div class="card text-center paint-card"
+						style="border-top: 4px solid green; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						<div class="card-header bg-light ">[[${s.title}]]</div>
+
+						<div class="card-body ">
+							<a th:href="@{'view_one/'+${s.id}}" class="btn btn-primary btn-sm">View</a>
+						</div>
+					</div>
+				</div>
+
+		
+				
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

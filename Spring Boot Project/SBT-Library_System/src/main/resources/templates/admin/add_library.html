@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid  p-2">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+
+					<div class="card paint-card">
+						<div class="card-header">
+							<h4 class="form-signin-heading text-center">Add Library</h4>
+
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+						</div>
+						<div class="card-body">
+
+							<form class="form-signin" method="post"
+								th:action="@{/admin/registerLibrary}"
+								enctype="multipart/form-data">
+								<div class="row">
+									<div class="col mb-3">
+										<label for="exampleInputEmail1" class="form-label">
+											Library Name</label> <input type="text"
+											class="form-control form-control-sm" required
+											name="libraryName">
+
+									</div>
+
+									<div class="col mb-3">
+										<label for="exampleInputEmail1" class="form-label">
+											Mobile Number</label> <input type="number"
+											class="form-control form-control-sm" required name="mobno">
+
+									</div>
+
+									<div class="mb-3 col">
+										<label for="exampleInputEmail1" class="form-label">
+											Email</label> <input type="email"
+											class="form-control form-control-sm" required name="email">
+
+									</div>
+								</div>
+
+								<div class="row">
+
+
+
+
+									<div class="mb-3 col">
+										<label for="exampleInputEmail1" class="form-label">
+											Address</label> <input type="text"
+											class="form-control form-control-sm" required name="address">
+									</div>
+									<div class="mb-3 col">
+										<label for="exampleInputEmail1" class="form-label">
+											City</label> <input type="text" class="form-control form-control-sm"
+											required name="city">
+
+									</div>
+									<div class="mb-3 col">
+										<label for="exampleInputEmail1" class="form-label">
+											State</label> <input type="text" class="form-control form-control-sm"
+											required name="state">
+									</div>
+								</div>
+								<div class="row">
+
+									<div class="mb-3 col">
+										<label for="exampleInputEmail1" class="form-label">
+											Pincode</label> <input type="number"
+											class="form-control form-control-sm" required name="pincode">
+									</div>
+									<div class="mb-3 col">
+										<label for="exampleInputEmail1" class="form-label">
+											Image</label> <input type="file" class="form-control form-control-sm"
+											required name="img">
+
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Description</label>
+									<textarea rows="3" cols="" class="form-control "
+										name="description"></textarea>
+
+								</div>
+
+								<button class="btn bg-custom text-white col-md-12" type="submit">Submit
+								</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

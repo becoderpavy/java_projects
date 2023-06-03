@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+
+<title></title>
+</head>
+<body style="background-color: #f4f6f9;">
+	<section>
+		<div class="text-center">
+			<p class="fs-4">Welcome to Admin</p>
+		</div>
+		<hr class="text-primary">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body"
+							style="margin-top: -10px; margin-bottom: -10px;">
+							<div class="row p-1">
+								<div class="card bg-primary col-md-4 ">
+									<div class="card-body text-white text-center">
+										<i class="fas fa-users fa-2x"></i>
+									</div>
+								</div>
+								<div class="col-md-5 text-center">
+									<p class="fs-5">Total users</p>
+									<h4>[[${usno}]]</h4>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body"
+							style="margin-top: -10px; margin-bottom: -10px;">
+
+							<div class="row p-1">
+								<div class="card bg-success col-md-4 ">
+									<div class="card-body text-white text-center">
+										<i class="fas fa-poll-h fa-2x"></i>
+									</div>
+								</div>
+								<div class="col-md-6 text-center">
+									<p class="fs-5">Total Survey</p>
+									<h4>[[${suno}]]</h4>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

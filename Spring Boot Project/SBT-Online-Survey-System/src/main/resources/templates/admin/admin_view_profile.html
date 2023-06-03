@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container p-3">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card">
+						<div class="card-body">
+							<div class="text-center ">
+
+								<i class="fas fa-user-circle fa-2x"></i><br>
+								<p class="text-center fs-2">View Profile</p>
+							</div>
+							<form th:action="@{create_user}" method="post">
+								<div class="row">
+									<div class="col">
+										<label class="fw-bold">First Name</label> <input type="text"
+											readonly th:value="${user.firstName}" name="firstName"
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label class="fw-bold">Last Name</label> <input type="text"
+											readonly th:value="${user.lastName}" name="lastName"
+											class="form-control form-control-sm">
+									</div>
+
+									<div class="col">
+										<label class="fw-bold">DOB</label> <input type="date" readonly
+											th:value="${user.dob}" name="dob"
+											class="form-control form-control-sm">
+									</div>
+								</div>
+								<div class="row mt-3">
+
+									<div class="col">
+										<label class="fw-bold">Mobile No</label> <input type="text"
+											readonly th:value="${user.mobNo}" name="mobNo"
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label class="fw-bold">Email</label> <input type="text"
+											readonly th:value="${user.email}" name="email"
+											class="form-control form-control-sm">
+									</div>
+								</div>
+								<div class="form-group mt-3">
+									<label class="fw-bold">Address</label>
+									<textarea readonly rows="3" cols="" name="address"
+										class="form-control">[[${user.address}]]</textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+</body>
+</html>

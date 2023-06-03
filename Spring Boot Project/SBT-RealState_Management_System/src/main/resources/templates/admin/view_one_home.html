@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="conatiner p-3">
+			<div class="row p-5">
+				<div class="col-md-12">
+					<div class="card paint-card">
+						<div class="card-body">
+							<div class="row p-5	">
+								<div class="col-md-4 offset-md-1">
+
+									<img alt="" th:src="@{'../../home_img/'+${home.fileName}}"
+										width="100%" height="300px">
+
+								</div>
+								<div class="col-md-5 offset-md-1">
+									<p class="fs-3">[[${home.title}]]</p>
+									<p>
+										<span class="fw-bold">Address :</span> [[${home.address}]],
+										[[${home.city}]],[[${home.state}]],[[${home.pincode}]]
+									</p>
+									<hr>
+									<p>
+										<span class="fw-bold">Owner Name :</span>
+										[[${home.ownerName}]]<br> <span class="fw-bold">Contact
+											No :</span> 90909090<br> <span class="fw-bold">Email :</span>
+										pabitra@gmail.com
+									</p>
+
+									<hr>
+									<p>
+										<span class="fw-bold">Description :</span>
+										[[${home.description}]]
+									</p>
+
+
+
+
+									<div class="row">
+										<a th:href="@{'/admin/editHome/'+${home.id}}"
+											class="btn btn-primary col-md-4">Edit</a> <a
+											th:href="@{'/admin/deleteHome/'+${home.id}}"
+											class="btn btn-danger col-md-4 offset-md-1">Delete</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

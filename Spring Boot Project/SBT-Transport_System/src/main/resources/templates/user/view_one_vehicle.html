@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="container p-3">
+		<div class="row">
+			<p class="fs-3 text-center">Truck Details</p>
+
+
+
+			<div class="col-md-12 paint-card p-5">
+				<div class="row">
+					<div class="col-md-6 text-end">
+						<img alt="" th:src="@{'../../veh_img/'+${v.img}}" width="330px"
+							height="400px">
+					</div>
+
+					<div class="col-md-6">
+
+
+						<p class="fs-3">[[${v.vehicleType}]]</p>
+						<p>
+							<span class="fw-bold">Description : </span><br>[[${v.description}]]
+						</p>
+						<p>
+							<span class="fw-bold"> Vehcile Deatils: </span> <br>
+							Vechicle Number : [[${v.vechicleNumber}]] <br> Owner Name :
+							[[${v.ownerName}]] <br> Contact No : [[${v.contactNo}]] <br>
+							Insurance Status : [[${v.insuranceStatus}]] <br>
+							Availability :[[${v.availability}]] <br> location :
+							[[${v.location}]]
+
+						</p>
+						<p class="fs-5 fw-bold">
+							Price In KM :&nbsp; &nbsp; &nbsp; &nbsp;<i
+								class="fas fa-rupee-sign"></i> 20
+						</p>
+
+						<div class="row">
+							<div class="col-md-4 text-danger text-center p-2">
+								<i class="fas fa-truck-moving fa-2x"></i>
+								<p>24 * 7 Service</p>
+							</div>
+							<div class="col-md-4 text-danger text-center p-2">
+								<i class="fas fa-undo-alt fa-2x"></i>
+								<p>Customer Satisfication</p>
+							</div>
+							<div class="col-md-4 text-danger text-center p-2">
+
+								<i class="fa-solid fa-square-phone fa-2x"></i>
+								<p>Poblem Solve</p>
+							</div>
+
+
+						</div>
+
+						<th:block th:if="${user==null}">
+							<a href="/signin" class="btn btn-danger col-md-12"> Book</a>
+						</th:block>
+
+						<th:block th:if="${user!=null}">
+
+							<th:block th:if="${v.availability=='Booked'}">
+
+								<a href="#" class="btn btn-danger col-md-12 disabled">Book</a>
+							</th:block>
+
+
+							<th:block th:if="${v.availability=='Available'}">
+
+								<a th:href="@{'/user/service/'+${v.id}}"
+								class="btn btn-danger col-md-12">Book</a>
+							</th:block>
+							
+
+
+						</th:block>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>

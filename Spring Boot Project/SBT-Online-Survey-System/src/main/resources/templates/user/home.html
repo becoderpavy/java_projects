@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<p class="fs-2 text-center">Survey</p>
+		<div th:if="${session.message}"
+									th:classappend="${session.message.type}">
+									<p class="fs-5 text-center"
+										th:text="${session.message.content}"></p>
+									<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+								</div>
+		
+		<div class="row">
+			<form th:action="@{search}" method="get">
+				<div class="row">
+					<div class="col text-right">
+						<label class="fw-bold ms-5"></label>
+					</div>
+					<div class="col paint-card">
+						<input type="text" class="form-control form-control-sm" name="keyword">
+					</div>
+					<div class="col">
+						<button class="btn btn-primary btn-sm"><i class="fas fa-search"></i> Search</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<hr class="text-primary">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 mt-2 " th:each="s:${slist}">
+					<div class="card text-center paint-card"
+						style="border-top: 4px solid green; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						<div class="card-header bg-light ">[[${s.title}]]</div>
+
+						<!-- <div th:if="${}" class="card-body ">
+							<a th:href="@{'viewSurvey/'+${s.id}}" class="btn btn-primary btn-sm">Take</a>
+						</div> -->
+						
+						<div class="card-body">
+							<a th:href="@{'viewSurvey/'+${s.id}}" class="btn btn-primary btn-sm">Take </a>
+						</div>
+						
+						<!-- <div th:unless="${slist.enable}" class="card-body">
+							<a th:href="@{'viewSurvey/'+${s.id}}" class="btn btn-primary btn-sm">Taken</a>
+						</div>	 -->	
+					</div>
+				</div>
+				
+				
+				<div class="col-md-3 mt-2 " th:each="s:${searchList}">
+					<div class="card text-center paint-card"
+						style="border-top: 4px solid green; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+						<div class="card-header bg-light ">[[${s.title}]]</div>
+
+						<div class="card-body ">
+							<a th:href="@{'viewSurvey/'+${s.id}}" class="btn btn-primary btn-sm">Take</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

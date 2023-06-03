@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body
+	style="height: 90vh; background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('../img/tr3.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+	<div class="container p-4">
+		<div class="col-md-12">
+			<div class="card paint-card">
+				<div class="card-body">
+					<p class="fs-4 text-center">Queries</p>
+					<div th:if="${session.succMsg}" class="text-center">
+						<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+						<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+					</div>
+
+					<div th:if="${session.errorMsg}" class="text-center">
+						<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+						<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Sl No</th>
+								<th scope="col">Username</th>
+								<th scope="col">Query</th>
+								<th scope="col">Response</th>
+								<th scope="col">Action</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+
+
+							<tr>
+							<tr th:each="f,c:${list}">
+								<td>[[${c.count}]]</td>
+								<td>[[${f.username}]]</td>
+								<td>[[${f.message}]]</td>
+								<td>[[${f.response}]]</td>
+
+								<td>
+									<form action="/admin/updateFeedback" method="post">
+										<div style="display: flex;">
+											<input type="text" class="form-control" name="response">
+											<input type="hidden" name="id" th:value="${f.id}">
+											<button class="btn btn-sm btn-primary ml-2">update</button>
+										</div>
+									</form>
+								</td>
+							</tr>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

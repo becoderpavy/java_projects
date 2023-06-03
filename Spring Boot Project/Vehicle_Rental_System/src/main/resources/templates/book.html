@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="container p-3">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card paint-card">
+					<div class="card-header text-center fs-3">Booking</div>
+					<div class="card-body">
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+						<p class="text text-success text-center fs-5" id="msg"></p>
+
+						<form id="add_book" class="row g-3" method="post" novalidate>
+
+							<div class="row mt-3">
+								<div class="col">
+									<label class="form-label">Customer Name</label> <input
+										id="customerName" type="text" required name="customerName"
+										class="form-control">
+
+									<p class="text text-danger" id="name_error"></p>
+								</div>
+
+								<div class="col">
+									<label class="form-label">Category</label> <select
+										class="form-control" name="category" id="category">
+										<option value="">--select--</option>
+										<option>Truck</option>
+										<option>Car</option>
+										<option>Bus</option>
+									</select>
+									<p class="text text-danger" id="category_error"></p>
+
+								</div>
+							</div>
+
+							<div class="mb-2">
+								<label class="form-label">Registration Number</label> <select
+									class="form-control" name="regNum" id="reg">
+									<option value="">--select--</option>
+
+
+								</select>
+								<p class="text text-danger" id="regnum_error"></p>
+							</div>
+
+							<div class="row mt-3">
+
+								<div class="col">
+									<label class="form-label">Date From</label> <input type="date"
+										id="inputdate" required name="userName"
+										class="form-control form-control-sm ">
+
+									<p class="text text-danger" id="dtFrom_error"></p>
+								</div>
+								<div class="col">
+									<label class="form-label">Date To</label> <input type="date"
+										id="inputdate2" required name="userName"
+										class="form-control form-control-sm ">
+
+									<p class="text text-danger" id="dtTo_error"></p>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<label class="form-label">Total Rent</label> <input required
+									type="text" name="password" readonly
+									class="form-control form-control-sm" id="tamt">
+							</div>
+
+							<div class="row mt-3">
+								<label class="col"> Payment Received</label>
+								<div class="form-check col">
+									<input class="form-check-input" type="checkbox" 
+										id="advance"> <label class="form-check-label"
+										for="flexCheckDefault"> Advance </label>
+								</div>
+
+
+
+
+							</div>
+
+							<button class="btn bg-custom text-white col-md-12 ">Book</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

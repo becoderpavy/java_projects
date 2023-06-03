@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid  p-5">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Add Bag</h4>
+							<form class="form-signin" method="post"
+								th:action="@{/admin/addBooks}" enctype="multipart/form-data">
+
+								<div th:if="${session.succMsg}" class="text-center">
+									<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+									<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+								</div>
+
+								<div th:if="${session.errorMsg}" class="text-center">
+									<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+									<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Title</label> <input type="text" class="form-control" required
+										name="title">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Color</label> <input type="text" class="form-control" required
+										name="color">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Description</label>
+									<textarea rows="3" cols="" class="form-control"
+										name="description"></textarea>
+
+								</div>
+
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Category</label> <select name="categortId" class="form-control">
+										<option>--select--</option>
+										<th:block th:each="cat:${category}">
+											<option th:value="${cat.id}">[[${cat.name}]]</option>
+										</th:block>
+
+									</select>
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Cloth Type</label> <input type="text" class="form-control" required
+										name="colthType">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Price</label> <input type="number" class="form-control" required
+										name="price">
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Image</label> <input type="file" class="form-control" required
+										name="img">
+
+								</div>
+
+
+								<button class="btn bg-custom text-white col-md-12" type="submit">Submit
+								</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+
+				
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

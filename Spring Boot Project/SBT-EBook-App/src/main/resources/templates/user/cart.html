@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="container p-5">
+
+			<div class="row">
+				<p class="text-center fs-4">Cart Page</p>
+
+				<div th:if="${session.succMsg}" class="text-center">
+
+					<div class="alert alert-success" role="alert">
+						[[${session.succMsg}]]</div>
+
+					<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+				</div>
+
+				<div th:if="${session.errorMsg}" class="text-center">
+					<div class="alert alert-success" role="alert">[[${session.errorMsg}]]</div>
+
+					<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+				</div>
+				<div class="col-md-8">
+					<table class="table">
+						<thead class="text-center bg-light ">
+							<tr>
+								<th scope="col">Image</th>
+								<th scope="col">Name</th>
+								<th scope="col">Price</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Total Price</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+
+
+
+
+							<tr th:each="c:${cartList}">
+
+								<th:block th:with="b=${bookService.getBookById(c.bookId)}">
+									<th scope="row"><img
+										th:src="@{'../book_img/'+${b.imgName}}" width="80px"
+										height="80px"></th>
+									<td class="p-3"><p class="fs-3">[[${b.bookName}]]</p></td>
+									<td class="p-3"><p class="fs-3">[[${b.price}]]</p></td>
+									<td class="p-3"><p class="fs-3">[[${c.quantity}]]</p></td>
+									<td class="p-3">
+
+										<p class="fs-3">[[${c.quantity *b.price}]]</p> <th:block
+											th:with="totalAmount=${c.quantity *b.price}">
+									</td>
+
+
+									<td class="text-center p-4"><a
+										th:href="@{'cartIn/'+${b.id}+'/'+${c.quantity}+'/add/'+${c.id}+'/'+${user.id}}"
+										class="text-success"><i class="fas fa-2x  fa-plus-circle"></i>
+
+									</a> <a
+										th:href="@{'cartIn/'+${b.id}+'/'+${c.quantity}+'/neg/'+${c.id}+'/'+${user.id}}"
+										class="text-danger"><i class="fas fa-2x fa-minus-circle"></i></a>
+
+
+									</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+
+				<div class="col-md-4">
+
+					<div class="col-md-12">
+						<div class="card paint-card">
+							<div class="card-body">
+								<p class="fs-6 text-Secondary text-center">Delivery Address</p>
+
+								<p style="color: black;">
+									[[${user.firstName}]] <br> [[${user.address}]] <br>[[${user.city}]] ,[[${user.state}]], [[${user.pincode}]] <br>Mobile
+									No: [[${user.mobNo}]]
+								</p>
+								<a class="fs-5 text-decoration-none" href="profile">Change
+									Address</a>
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 mt-2">
+						<div class="card paint-card">
+							<div class="card-body">
+								<p class="fs-6 text-Secondary text-center">Payment</p>
+								<p class="fw-bold" style="color: black;">
+									Amount: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#8377;
+									[[${billAmount}]]<br> Shipping Charge:&nbsp; &nbsp; &nbsp;
+									&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#8377;
+									60 <br> Tax :&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+									&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+									&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+									&nbsp;&nbsp; &nbsp;&#8377; 30
+								</p>
+								<hr>
+								<p class="fw-bold">
+									Total Amount:&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+									&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+									&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&#8377;
+									[[${billAmount+60+30}]]<br>
+
+									<!-- Payment Type:&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+								&nbsp;&nbsp; &nbsp;&nbsp; Cash On Delivary -->
+
+
+								</p>
+
+
+
+
+								<form class="row g-3" action="saveOrders" method="post">
+									<div class="form-group">
+										<label class="form-label">Payment Mode</label> <select
+											name="type" class="form-control form-control-sm">
+											<option>--select--</option>
+											<!-- <option value="Debit card">Debit Card</option> -->
+											<option value="COD">Cash On Delivary</option>
+										</select>
+									</div>
+									<input type="hidden" name="amt" th:value="${billAmount+60+30}">
+									<input type="hidden" th:value="${user.id}" name="uid">
+
+
+
+									<div th:if="${cartList.empty}">
+									<button class="btn bg-success col-md-12 text-white" disabled>Place
+										Order</button>
+									</div>
+									
+									<div th:if="${!cartList.empty}">
+									<button class="btn bg-success col-md-12 text-white" >Place
+										Order</button>
+									</div>
+									
+
+								</form>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</th:block>
+		</th:block>
+		</th:block>
+
+	</section>
+</body>
+</html>

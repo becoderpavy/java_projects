@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="container p-1">
+			<p class="text-center text-danger fs-1">Electrician Profile</p>
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card text-center">
+						<!-- <div class="card-header text-center"></div> -->
+						<div class="card-body text-danger">
+							<img th:src="@{'../../elcetrician_profile/'+${e.fileName}}"
+								style="width: 150px; height: 150px; border-radius: 50%; border: 1px solid black;">
+							<p class="fs-4">[[${e.firstName}]]</p>
+
+							<div class="col-md-8 offset-md-4">
+								<table>
+									<tbody>
+										<tr>
+											<td class="fs-5 fw-bold text-dark text-start">Full Name</td>
+
+											<td class="fs-5 fw-bold text-dark text-start">:</td>
+
+											<td class="text-center fs-5">[[${e.firstName}]]
+												[[${e.lastName}]]</td>
+										</tr>
+										<tr>
+											<td class="fs-5 fw-bold text-dark text-start">Specialization</td>
+
+											<td class="fs-5 fw-bold text-dark text-start">:</td>
+											<td class="text-center fs-5">[[${e.specialization}]]</td>
+										</tr>
+
+										<tr>
+											<td class="fs-5 fw-bold text-dark text-start">Email</td>
+
+											<td class="fs-5 fw-bold text-dark text-start">:</td>
+											<td class="text-center fs-5">[[${e.email}]]</td>
+										</tr>
+
+										<tr>
+											<td class="fs-5 fw-bold text-dark text-start">Mobile No</td>
+
+											<td class="fs-5 fw-bold text-dark text-start">:</td>
+											<td class="text-center fs-5">[[${e.mobNo}]]</td>
+										</tr>
+
+										<tr>
+											<td class="fs-5 fw-bold text-dark text-start">Address</td>
+
+											<td class="fs-5 fw-bold text-dark text-start">:</td>
+											<td class="text-center fs-5">[[${e.address +','+
+												e.city+','+e.state+','+e.pincode}]]</td>
+										</tr>
+									</tbody>
+								</table>
+
+
+							</div>
+
+							<div class="mt-3">
+								<a th:href="@{'/user/book/'+${e.id}}" class="btn btn-danger col-md-3">Book</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

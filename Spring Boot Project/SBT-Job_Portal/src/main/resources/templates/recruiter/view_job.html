@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="recruiter/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-10 offset-md-1 mt-3 jobcard p-0 ">
+					<div class="card paint-card">
+						<div class="row">
+							<div class="col-md-4 offset-md-3 text-center">
+								<h3>Job</h3>
+								<div th:if="${session.succMsg}" class="text-center">
+									<h5 class="text-success fs-3" th:text="${session.succMsg}"></h5>
+									<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+								</div>
+
+								<div th:if="${session.errorMsg}" class="text-center">
+									<h5 class="text-danger fs-3" th:text="${session.errorMsg}"></h5>
+									<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+								</div>
+							</div>
+							<div class="col-md-4 text-right p-1">
+								<a th:href="@{'/recruiter/editJob/'+${j.id}}"
+									class="btn btn-sm btn-success text-white">Edit</a> <a
+									th:href="@{'/recruiter/deleteJob/'+${j.id}}"
+									class="btn btn-sm btn-danger text-white">Delete</a>
+							</div>
+						</div>
+						<div class="card-body">
+
+							<h5 class="ml-2">[[${j.title}]]</h5>
+							<div class="row p-2">
+								<div class="col-md-3">
+									<i class="fas fa-shopping-bag text-primary"></i> Company :
+									[[${j.companyName}]]
+								</div>
+								<div class="col-md-3">
+									<i class="fas fa-shopping-bag text-primary"></i> Category :
+									[[${j.category}]]
+								</div>
+								<div class="col-md-2">
+									<i class="fas fa-map-marker-alt text-warning"></i>
+									[[${j.location}]]
+								</div>
+								<div class="col-md-4">
+									<i class="fas fa-calendar-alt text-primary"></i> Publish Date :
+									[[${j.date}]]
+								</div>
+							</div>
+							<hr>
+							<div class="p-2">
+								<p>
+									<i class="far fa-clipboard text-primary"></i>
+									[[${j.description}]] .
+								</p>
+
+							</div>
+
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

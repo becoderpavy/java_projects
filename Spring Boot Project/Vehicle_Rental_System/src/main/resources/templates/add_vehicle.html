@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<div class="container p-2">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 mt-1">
+				<div class="card paint-card">
+					<div class="card-body">
+						<p class="fs-4 text-center">Add Vehicle</p>
+
+						<div th:if="${session.msg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.msg}"></p>
+							<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+						</div>
+
+						<form th:action="@{/createVehicle}" method="post">
+
+							<div class="row">
+								<div class="mb-3 col">
+									<label class="form-label">Registration Number</label> <input
+										required name="registrationNumber" type="text"
+										class="form-control">
+								</div>
+
+								<div class="mb-3 col">
+									<label class="form-label">Category</label> <select
+										class="form-control" name="category">
+										<option>--select--</option>
+										<option>Truck</option>
+										<option>Car</option>
+										<option>Bus</option>
+									</select>
+
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="mb-3 col">
+									<label class="form-label">Manufacture</label> <input required
+										name="manufacture" type="text" class="form-control">
+								</div>
+
+								<div class="mb-3 col">
+									<label class="form-label">Daily Rent</label> <input required
+										name="dailyRent" type="number" class="form-control">
+								</div>
+							</div>
+
+							<div class="row">
+
+								<div class="mb-3 col">
+									<label class="form-label">Mileage</label> <input required
+										name="mileage" type="number" class="form-control">
+								</div>
+								<div class="mb-3 mt-3 col">
+									<label>Fuel Type</label>
+									<div class="row">
+										<div class="form-check col">
+											<input class="form-check-input" type="radio" name="fuleType"
+												id="flexRadioDefault1"> <label
+												class="form-check-label" for="flexRadioDefault1">
+												Petrol </label>
+										</div>
+										<div class="form-check col ">
+											<input class="form-check-input" type="radio" name="fuleType"
+												id="flexRadioDefault2"> <label
+												class="form-check-label" for="flexRadioDefault2">
+												Diesel </label>
+										</div>
+
+										<div class="form-check col">
+											<input class="form-check-input" type="radio" name="fuleType"
+												id="flexRadioDefault2"> <label
+												class="form-check-label" for="flexRadioDefault2">
+												LPG </label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mb-3">
+								<label class="form-label">Description</label>
+								<textarea rows="3" cols="" class="form-control"
+									name="description"></textarea>
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="btn bg-custom text-white ">Add</button>
+								<button type="reset" class="btn bg-danger text-white ">Cancel</button>
+							</div>
+						</form>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

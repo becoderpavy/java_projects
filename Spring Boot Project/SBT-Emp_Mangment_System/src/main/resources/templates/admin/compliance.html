@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-4">
+
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center fs-2">Add Compliance</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form action="createCompliance" method="post">
+								<div class="mb-2">
+									<label> RL Type</label> <input type="text" name="rlType"
+										maxlength="3000" class="form-control">
+								</div>
+								<div class="mb-2">
+									<label> Details</label>
+									<textarea rows="3" cols="" class="form-control" name="details"
+										maxlength="5000"></textarea>
+								</div>
+
+								<div class="mb-2">
+									<label> Department</label> <select class="form-control"
+										name="department">
+										<option value="">--select--</option>
+										<option th:each="d:${list}" th:value="${d.departmentName}">[[${d.departmentName}]]</option>
+									</select>
+								</div>
+
+								<div class="mb-2">
+									<label> Status</label> <input type="text" name="status"
+										class="form-control">
+								</div>
+
+								<button class="btn bg-custom text-white mt-3 col-md-12">Add</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

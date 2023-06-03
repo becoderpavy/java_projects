@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-3">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="card-header text-center fs-4">Report</div>
+					<div class="card-body">
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">SL No</th>
+									<th scope="col">Vehicle Type</th>
+									<th scope="col">Total No Of Vehicle</th>
+									<th scope="col">Total No Of Vehicle Rented</th>
+									<th scope="col">Total Rent Earned</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Truck</td>
+									<td>[[${ttruck}]]</td>
+									<td>[[${tntruck}]]</td>
+									<td>[[${ptruck}]]</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Car</td>
+									<td>[[${tcar}]]</td>
+									<td>[[${tncar}]]</td>
+									<td>[[${pcar}]]</td>
+								</tr>
+								<tr>
+									<th scope="row">3</th>
+									<td>Bus</td>
+									<td>[[${tbus}]]</td>
+									<td>[[${tnbus}]]</td>
+									<td>[[${pbus}]]</td>
+								</tr>
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+</body>
+</html>

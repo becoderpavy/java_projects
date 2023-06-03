@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-3">
+			<div class="row">
+				<p class="fs-3 text-center">Book Details</p>
+
+				<div th:if="${session.succMsg}" class="text-center">
+
+					<div class="alert alert-success" role="alert">
+						[[${session.succMsg}]]</div>
+
+					<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+				</div>
+
+				<div th:if="${session.errorMsg}" class="text-center">
+					<div class="alert alert-success" role="alert">[[${session.errorMsg}]]</div>
+
+					<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+				</div>
+
+				<div class="col-md-12 paint-card p-5">
+					<div class="row">
+						<div class="col-md-6 text-end">
+							<img alt="" th:src="@{'../book_img/'+${book.imgName}}"
+								width="330px" height="400px">
+						</div>
+
+						<div class="col-md-6">
+
+
+							<p class="fs-3">[[${book.bookName}]]</p>
+							<p>
+								<span class="fw-bold">Description : </span><br>[[${book.description}]]
+							</p>
+							<p>
+								<span class="fw-bold"> Book Deatils: </span> <br>ISBN NO :
+								[[${book.isbnNo}]] <br> Author : [[${book.author}]] <br>
+								Category : [[${book.category.name}]]
+
+							</p>
+							
+							<p>
+								<span class="fw-bold"> Library Deatils: </span> <br>Library Name :
+								[[${book.library.libraryName}]] <br> Email : [[${book.library.email}]] <br>
+								Address : [[${book.library.address}]], [[${book.library.city}]] <br>
+								
+								[[${book.library.state}]],[[${book.library.pincode}]]
+
+							</p>
+							
+							
+							<p class="fs-5 fw-bold">
+								Price :&nbsp; &nbsp; &nbsp; &nbsp;<i class="fas fa-rupee-sign"></i>
+								[[${book.price}]]
+							</p>
+
+							<div class="row">
+								<div class="col-md-4 text-danger text-center p-2">
+									<i class="fas fa-money-bill-wave fa-2x"></i>
+									<p>Cash On Delivery</p>
+								</div>
+								<div class="col-md-4 text-danger text-center p-2">
+									<i class="fas fa-undo-alt fa-2x"></i>
+									<p>Return Available</p>
+								</div>
+								<div class="col-md-4 text-danger text-center p-2">
+									<i class="fas fa-truck-moving fa-2x"></i>
+									<p>Free Shipping</p>
+								</div>
+
+
+							</div>
+							<th:block th:if="${user==null}">
+								<a href="/signin" class="btn btn-danger col-md-12">Add To
+									Cart</a>
+							</th:block>
+
+							<th:block th:if="${user!=null}">
+							
+							<th:block th:if="${cartService.checkCartUser(user.id,book.id)}">
+							<button disabled
+									class="btn btn-danger col-md-12">Added To Cart</button>
+							
+							</th:block>
+							
+							<th:block th:unless="${cartService.checkCartUser(user.id,book.id)}">
+							<a th:href="@{'/user/addCart/'+${user.id}+'/'+${book.id}}"
+									class="btn btn-danger col-md-12">Add To Cart</a>
+							
+							</th:block>
+							
+							
+							
+								
+							</th:block>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

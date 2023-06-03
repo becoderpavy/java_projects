@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<filter>
+		<filter-name>adminAuth</filter-name>
+		<filter-class>com.transport.filter.AdminAuthFilter</filter-class>
+	</filter>
+	
+	<filter>
+		<filter-name>managerAuth</filter-name>
+		<filter-class>com.transport.filter.ManagerAuthFilter</filter-class>
+	</filter>
+	
+	<filter>
+		<filter-name>userAuth</filter-name>
+		<filter-class>com.transport.filter.UserAuthFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>adminAuth</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>managerAuth</filter-name>
+		<url-pattern>/manager/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>userAuth</filter-name>
+		<url-pattern>/user/*</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

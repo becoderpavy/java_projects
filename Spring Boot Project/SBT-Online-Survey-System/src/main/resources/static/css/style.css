@@ -1,0 +1,21 @@
+/* body {
+	background-color: #eeeeee !important;
+}
+ */
+.banner {
+	width: 100%;
+	height: 70vh;
+	/* background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)),
+		url("../img/survey2.jpg"); */
+	background-size: cover;
+	background-color: #00c4c4;
+}
+
+.navbar .nav-item .nav-link {
+	color: green;
+	size: 20px;
+}
+
+.mycard {
+	box-shadow: 5px 5px #f0f1f2;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-2">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-2">Project Status</p>
+
+							<a href="/manager/viewAssignProject"
+								class="btn bg-custom text-white"> <i
+								class="fa-solid fa-angle-left"></i> Back
+							</a>
+							<div class="bg-custom text-white p-2 mt-2">
+
+
+								<i class="fa-solid fa-circle-user fa-2x"></i> <span
+									class="fs-4 ms-2">[[${projectId.firstName+'
+									'+projectId.lastName}]]</span>
+							</div>
+
+							<div class="text-white p-5"
+								style="overflow-y: scroll; display: flex; flex-direction: column-reverse; height: 330px;background-color: #f7efda;">
+
+								<th:block th:each="s:${projectStatus}">
+
+									<div th:if="${s.messageUser=='Emp'}">
+										<p class="text-start me-5  text-dark fs-5">
+											<span style="background-color: white"> [[${s.status}]]</span>
+										</p>
+									</div>
+									<div th:if="${s.messageUser=='Manager'}">
+										<p class="text-end ms-5  text-dark fs-5">
+											<span style="background-color: white">[[${s.status}]]</span>
+										</p>
+									</div>
+								</th:block>
+
+							</div>
+							<div style="margin-top: 0">
+								<form action="/manager/projectStatusUpdate" method="post">
+									<input type="hidden" th:value="${emp.id}" name="managerId">
+									<input type="hidden" th:value="${assignProject.userId}"
+										name="userId"> <input type="hidden"
+										th:value="${assignProject.id}" name="projectId"> <input
+										type="hidden" value="Manager" name="messageUser">
+									<div class="row">
+										<div class="col-md-9">
+
+											<input type="text" name="status" class="form-control"
+												required placeholder="Enter Message">
+
+										</div>
+
+										<div class="col-md-3">
+											<button class="btn bg-custom text-white col-md-12">
+												<i class="fa-solid fa-circle-chevron-right"></i> Send
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- <div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Message</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form action="/manager/projectStatusUpdate" method="post">
+
+							<div class="mb-3">
+								<label>Project Name</label> <input type="text" name="firstName"
+									readonly th:value="${assignProject.projectName}"
+									class="form-control">
+							</div>
+
+							<input type="text" th:value="${emp.id}" name="managerId">
+							<input type="text" th:value="${assignProject.userId}"
+								name="userId"> <input type="text"
+								th:with="us=${managerService.getEmpById(assignProject.userId)}"
+								th:value="${us.firstName+' '+us.lastName}" name="userName">
+
+							<input type="text" th:value="${emp.firstName+' '+emp.lastName}"
+								name="managerName"> <input type="text"
+								th:value="${assignProject.id}" name="projectId"> <input
+								type="text" value="Manager" name="messageUser">
+
+							<div class=" mt-3">
+								<label>Message</label>
+								<textarea rows="3" cols="" class="form-control" name="status"></textarea>
+							</div>
+
+							<button class="btn bg-custom text-white mt-3 col-md-12">Submit</button>
+						</form>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+	</section>
+</body>
+</html>

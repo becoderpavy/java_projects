@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-customer fs-1">Marriage
+								Certificate Status</p>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Boy Name</th>
+										<th scope="col">Girl Name</th>
+										<th scope="col">Marrige Date</th>
+
+										<th scope="col">Certificate</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="m,c:${list}">
+										<td>[[${c.count}]]</td>
+										<td>[[${m.boyName}]]</td>
+										<td>[[${m.girlName}]]</td>
+										<td>[[${m.marrigeDate}]]</td>
+										<td><th:block th:if="${m.status=='Review'}">
+												<a href="#" class="btn btn-warning btn-sm col-md-12">Review</a>
+											</th:block> <th:block th:if="${m.status=='Reject'}">
+												<a href="#" class="btn btn-danger btn-sm disabled col-md-12">Rejected</a>
+											</th:block> <th:block th:if="${m.status=='Approve'}">
+												<a th:href="@{'/user/printMarriage/'+${m.id}}"
+													class="btn btn-success btn-sm col-md-12">Print</a>
+											</th:block></td>
+
+										<td><a th:href="@{'viewMarriage/'+${m.id}}"
+											class="btn btn-sm bg-custom text-white">View</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

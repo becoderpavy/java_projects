@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="student/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+
+
+		<div class="container-fluid backimg">
+			<p class="text-center fw-bold text-white fs-1 p-3">Student Dashboard</p>
+		</div>
+
+
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-3">
+				<a th:href="@{/student/timetable}" class="text-decoration-none">
+					<div class="card paint-card">
+						<div class="card-body text-center text-custom">
+							<i class="fa-solid fa-table fa-2x"></i> <br>
+							<p class="fs-2">Timetable</p>
+						</div>
+					</div></a>
+				</div>
+
+				<div class="col-md-3">
+				<a th:href="@{/student/noticeboard}" class="text-decoration-none">
+					<div class="card paint-card">
+						<div class="card-body text-center text-custom">
+							<i class="fa-solid fa-clipboard fa-2x"></i> <br>
+							<p class="fs-2">Notice board</p>
+						</div>
+					</div></a>
+				</div>
+
+				<div class="col-md-3">
+				<a th:href="@{/student/faculity}" class="text-decoration-none">
+					<div class="card paint-card">
+						<div class="card-body text-center text-custom">
+							<i class="fa-solid fa-chalkboard-user fa-2x"></i> <br>
+							<p class="fs-2">Faculty</p>
+						</div>
+					</div></a>
+				</div>
+
+				<div class="col-md-3">
+				<a th:href="@{/student/assignment}" class="text-decoration-none">
+					<div class="card paint-card">
+						<div class="card-body text-center text-custom">
+							<i class="fa-solid fa-book fa-2x"></i> <br>
+							<p class="fs-2">Assignment</p>
+						</div>
+					</div></a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="bg-success p-2">
+			<p class="text-center text-white">@copyright reserverd by
+				studentportal.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

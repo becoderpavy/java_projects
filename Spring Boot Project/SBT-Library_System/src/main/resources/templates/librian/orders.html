@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid  p-5">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Order Details</h4>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Image</th>
+										<th scope="col">Order Id</th>
+										<th scope="col">User Details</th>
+										<th scope="col">Book Details</th>
+										<th scope="col">Quantity</th>
+										<th scope="col">Price</th>
+										<th scope="col">Payment Type</th>
+										<th scope="col">Status</th>
+										<th scope="col" class="text-center">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+
+									<tr th:each="o:${orders}">
+										<th:block th:with="b=${bookService.getBookById(o.bookId)}">
+											<th:block th:with="u=${userService.getUserById(o.userId)}">
+												<th scope="row"><img
+													th:src="@{'../book_img/'+${b.imgName}}" width="70px"
+													height="70px"></th>
+
+												<th scope="row">[[${o.orderId}]]</th>
+
+
+
+												<td>[[${u.firstName +' '+ u.lastName}]] <br>
+													Address: [[${u.address}]] , City: [[${u.city}]] <br>
+													State: [[${u.state}]] , Pincode: [[${u.pincode}]]
+												</td>
+												<td>[[${b.bookName}]]<br>Author: [[${b.author}]]<br>ISBN
+													:[[${b.isbnNo}]] <br>Category: [[${b.category.name}]]
+												</td>
+												<td>[[${o.quantity}]]</td>
+												<td>[[${o.totalAmount}]]</td>
+												<td>[[${o.paymentType}]]</td>
+												<td>[[${o.status}]]</td>
+												<td>
+													<form action="ordStatus">
+														<input type="hidden" th:value="${o.id}" name="id">
+														<div class="row">
+															<div class="col">
+																<select name="st" class="form-control form-control-sm ">
+																	<option>--select--</option>
+																	<option>Order Processing</option>
+																	<option>Order Recieved</option>
+																	<option>Order Packed</option>
+																	<option>Out for delivery</option>
+																	<option>Order delivered</option>
+																</select>
+															</div>
+															<div class="col ">
+																<button class="btn btn-sm btn-primary ml-2">update</button>
+															</div>
+														</div>
+													</form>
+												</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

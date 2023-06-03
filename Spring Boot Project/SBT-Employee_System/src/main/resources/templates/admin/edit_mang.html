@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<p class="fs-1 text-center text-custom">Edit Manager Profile</p>
+						<div class="card-body">
+							<form th:action="@{/admin/updateManagerProfile}" method="post">
+								<div class="row">
+									<div class="col">
+										<label>First Name</label> <input type="text" name="firstName"
+											required th:value="${e.firstName}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Last Name</label> <input type="text" name="lastName"
+											required th:value="${e.lastName}" class="form-control">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>DOB</label> <input type="date" name="dob" required
+											th:value="${e.dob}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Mobile Number</label> <input type="text" name="mobNo"
+											required th:value="${e.mobNo}" class="form-control">
+									</div>
+
+
+								</div>
+								<div class="mt-3">
+									<label>Email ID</label> <input type="text" name="email"
+										required th:value="${e.email}" class="form-control">
+								</div>
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Address</label> <input type="text" name="address"
+											required th:value="${e.address}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>City</label> <input type="text" name="city" required
+											th:value="${e.city}" class="form-control">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>State</label> <input type="text" name="state" required
+											th:value="${e.state}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Pincode</label> <input type="text" name="pincode"
+											required th:value="${e.pincode}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Role</label> <select class="form-control" name="role"
+											required>
+											<option th:value="${e.role}">[[${e.role}]]</option>
+											<option value="ROLE_USER">Employee</option>
+											<option value="ROLE_MANAGER">Manager</option>
+										</select>
+									</div>
+								</div>
+								<input type="hidden" name="id" th:value="${e.id}">
+								<button class="btn bg-custom col-md-12 text-white mt-3">Update</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

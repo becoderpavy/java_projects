@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-2">
+			<div class="row">
+
+				<div class="card paint-card">
+					<div class="card-body">
+						<p class="text-center fs-1 text-danger">View Electrician</p>
+						<div th:if="${session.succMsg}" class="text-center">
+							<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+						</div>
+
+						<div th:if="${session.errorMsg}" class="text-center">
+							<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+							<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+						</div>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Sl No</th>
+									<th scope="col">Image</th>
+									<th scope="col">Full Name</th>
+									<th scope="col">Email</th>
+									<th scope="col">Mobile No</th>
+									<th scope="col">Specialization</th>
+									<th scope="col">Experience</th>
+									<th scope="col">Address</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="e,c:${list}">
+									<th scope="row">[[${c.count}]]</th>
+									<th scope="col"><img th:src="@{'../elcetrician_profile/'+${e.fileName}}"
+										style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid black;"></th>
+									<td>[[${e.firstName}]] [[${e.lastName}]]</td>
+									<td>[[${e.email}]]</td>
+									<td>[[${e.mobNo}]]</td>
+									<td>[[${e.specialization}]]</td>
+									<td>[[${e.experience}]]</td>
+									<td>[[${e.address}]],[[${e.city}]],[[${e.state}]],[[${e.pincode}]]</td>
+
+									<td><a th:href="@{'editElectrician/'+${e.id}}"
+										class="btn btn-sm btn-outline-danger">Edit</a> <a
+										th:href="@{'/admin/deleteElectrician/'+${e.id}}"
+										class="btn btn-sm btn-danger">Delete</a></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

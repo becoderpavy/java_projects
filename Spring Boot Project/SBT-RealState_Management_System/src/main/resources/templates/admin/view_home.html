@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="backimgs">
+			<p class="fs-1 text-center p-1 text-white">View Property</p>
+
+		</div>
+		<div th:if="${session.succMsg}" class="text-center">
+			<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+			<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+		</div>
+
+		<div th:if="${session.errorMsg}" class="text-center">
+			<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+			<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3" th:each="s,c:${list}">
+					<div class="card paint-card mt-3">
+						<div class="card-body">
+							<img alt="" th:src="@{'../home_img/'+${s.fileName}}" width="100%"
+								height="150px">
+							<div class="text-center">
+								<p>[[${s.title}]]</p>
+								<a th:href="@{'viewOneHome/'+${s.id}}" class="btn btn-danger">View
+									Details</a> <a href="#" class="btn btn-danger"><i
+									class="fa-solid fa-location-dot"></i> [[${s.city}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+</body>
+</html>

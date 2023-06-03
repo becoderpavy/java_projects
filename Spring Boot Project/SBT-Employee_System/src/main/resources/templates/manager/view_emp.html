@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">View Emp Details</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Emp Name</th>
+										<th scope="col">Role</th>
+										<th scope="col">DOB</th>
+										<th scope="col">Mob No</th>
+										<th scope="col">Email</th>
+										<th scope="col">Address</th>
+										<th scope="col">Action</th>
+
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr th:each="e,c:${list}">
+										<td>[[${c.count}]]</td>
+
+										<th:block th:with="em=${managerService.getEmpById(e.userId)}">
+
+											<td>[[${em.firstName+' '+em.lastName}]]</td>
+											<td>Employee</td>
+											<td>[[${em.dob}]]</td>
+											<td>[[${em.mobNo}]]</td>
+											<td>[[${em.email}]]</td>
+											<td>[[${em.address+','+em.city+','+em.state+','+em.pincode}]]</td>
+											<td><th:block
+													th:if="${managerService.getByManagerAndUser(emp.id,em.id).projectName!='NA'}">
+													<button class="btn btn-sm btn-success">Assigned</button>
+												</th:block> 
+												
+												
+												<th:block
+													th:if="${managerService.getByManagerAndUser(emp.id,em.id).projectName=='NA'}">
+													<a th:href="@{'/manager/assignProject/'+${em.id}}"
+														class="btn btn-sm btn-primary">Assign Project</a>
+												</th:block></td>
+										</th:block>
+
+
+
+									</tr>
+
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

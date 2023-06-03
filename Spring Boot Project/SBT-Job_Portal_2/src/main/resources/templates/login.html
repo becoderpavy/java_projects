@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body style="background: url('img/login.jpg'); background-repeat: no-repeat; background-size: cover;">
+	<section>
+		<div class="container  p-3">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card paint-card">
+
+						<div class="card-header">
+							<h4 class="form-signin-heading text-center">Sign in</h4>
+							<div th:if="${param.error}" class="alert alert-danger">
+								[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
+
+							<div th:if="${param.logout}" class="alert alert-success">
+								Logout Sucessfully</div>
+						</div>
+
+						<div class="card-body">
+
+							<form class="form-signin" method="post" th:action="@{/login}">
+
+
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Email
+										address</label> <input type="email" class="form-control" required
+										id="exampleInputEmail1" aria-describedby="emailHelp"
+										name="username">
+
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Password</label>
+									<input type="password" class="form-control" name="password"
+										required id="exampleInputPassword1">
+								</div>
+
+								<button class="btn btn-primary col-md-12" type="submit">Sign
+									in</button>
+
+								
+							</form>
+						</div>
+						
+						<div class="text-center p-3 card-footer">
+									<a href="/userValidation" style="text-decoration: none;">Forgot
+										Password </a> <br> Don't have an Account <a href="/register"
+										style="text-decoration: none;">create</a>
+								</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

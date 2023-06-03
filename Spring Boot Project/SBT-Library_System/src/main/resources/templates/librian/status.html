@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-4 bg-custom">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<form action="/librian/searchIssueBookStatus" method="post">
+						<div class="input-group">
+							<input type="text" class="form-control" name="email"
+								placeholder="Enter Email">
+							<button class="btn bg-white ms-2 col-md-2 text-dark">
+								<i class="fa-solid fa-magnifying-glass"></i> Search
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container p-2">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card ">
+						<div class="card-body">
+							<h4 class="text-center">User Status</h4>
+							<hr>
+							<th:block th:if="${st=='no'}">
+								<form>
+									<div class="row">
+										<div class="col mb-3">
+											<label>Full Name</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Email</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col mb-3">
+											<label>Mobile Number</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Address</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col mb-3">
+											<label>City</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>State</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Pincode</label> <input type="text"
+												class="form-control form-control-sm">
+										</div>
+									</div>
+
+									<a href="/librian/bookStatus"
+										class="btn bg-custom col-md-12 text-white mt-3">View Book</a>
+
+								</form>
+							</th:block>
+
+							<th:block th:if="${st=='yes'}">
+								<th:block th:if="${us!=null}">
+									<form>
+										<div class="row">
+											<div class="col mb-3">
+												<label>Full Name</label> <input readonly type="text" th:value="${us.firstName}+' '+ ${us.lastName} "
+													class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Email</label> <input type="text" th:value="${us.email}" readonly
+													class="form-control form-control-sm">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col mb-3">
+												<label>Mobile Number</label> <input type="text" th:value="${us.mobNo}" readonly
+													class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Address</label> <input type="text" th:value="${us.address}" readonly
+													class="form-control form-control-sm">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col mb-3">
+												<label>City</label> <input type="text" th:value="${us.city}" readonly
+													class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>State</label> <input type="text" th:value="${us.state}" readonly
+													class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Pincode</label> <input type="text" th:value="${us.pincode}" readonly
+													class="form-control form-control-sm">
+											</div>
+										</div>
+
+										<a th:href="@{'/librian/bookStatus/'+${us.id}}"
+											class="btn bg-custom col-md-12 text-white mt-3">View Book</a>
+
+									</form>
+								</th:block>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div
+			style="background-image: url(../img/bookimg.jpeg); width: 100%; height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover;">
+			<h1 class="text-center text-white p-3">Welcome to [[${user.library.libraryName}]] </h1>
+		</div>
+
+	</section>
+</body>
+</html>

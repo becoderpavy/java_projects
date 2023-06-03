@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		<section>
+		<div class="container-fluid bg-light p-5">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<h3 class="text-center text-primary">View Profile</h3>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form action="#" method="post">
+								<div class="row">
+									<div class="col">
+										<label>First Name</label> <input type="text" name="firstName"
+											readonly th:value="${emp.firstName}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Last Name</label> <input type="text" name="lastName"
+											readonly class="form-control" th:value="${emp.lastName}">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>DOB</label> <input type="date" name="dob" readonly
+											th:value="${emp.dob}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Mobile Number</label> <input type="text" name="mobNo"
+											readonly th:value="${emp.mobNo}" class="form-control">
+									</div>
+
+
+								</div>
+								<div class="mt-3">
+									<label>Email ID</label> <input type="text" name="email"
+										readonly th:value="${emp.email}" class="form-control">
+								</div>
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Address</label> <input type="text" name="address"
+											readonly th:value="${emp.address}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>City</label> <input type="text" name="city" readonly
+											th:value="${emp.city}" class="form-control">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>State</label> <input type="text" name="state" readonly
+											th:value="${emp.state}" class="form-control">
+									</div>
+
+									<div class="col">
+										<label>Pincode</label> <input type="text" name="pincode"
+											readonly th:value="${emp.pincode}" class="form-control">
+									</div>
+
+
+									<input type="hidden" name="role" th:value="ROLE_MANAGER">
+
+								</div>
+
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

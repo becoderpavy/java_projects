@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<section>
+		<div class="container">
+			<h3 class="text-center">Notes</h3>
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}" class="text-center"
+				role="alert">
+
+				<h4 th:text="${session.message.content}"></h4>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+
+			<div class="col-md-12 mt-3" th:each="n:${Notes}">
+				<div class="card paint-card">
+					<div class="card-body">
+						<div class="text-center">
+							<img alt="" th:src="@{/img/paper.png}"
+								style="width: 50px; height: 50px;">
+						</div>
+
+						<h5>[[${n.title}]]</h5>
+						<p>
+							[[${n.description}]] <br><br> <span class="font-weight-bold">Upload
+								Date :</span> [[${n.createdDt}]]
+
+						</p>
+						<div class="text-center">
+							<a th:href="@{'/user/editform/'+${n.id}}"
+								class="btn btn-primary btn-sm">Edit</a> <a
+								th:href="@{'/user/deleteNotes/'+${n.id}}"
+								class="btn btn-danger btn-sm ml-2">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+			<div class="row mt-4">
+				<div class="col-md-4 ">
+					<p class="text-center">Total Elemets : [[${totalElement}]]</p>
+				</div>
+
+				<div class="col-md-6">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li th:classappend="${pageNo==0} ? 'disabled' : '' "
+								class="page-item"><a class="page-link"
+								th:href="@{'/user/view_notes/'+${pageNo-1}  }">Previous</a></li>
+
+
+							<li th:each="i : ${#numbers.sequence(1,totalPage)}"
+								th:classappend="${pageNo+1==i}?'active':''" class="page-item">
+
+								<a class="page-link" th:href="@{'/user/view_notes/'+${i-1}}">[[${i}]]</a>
+
+							</li>
+
+
+							<li
+								th:classappend="${pageNo+1 == totalPage} ?  'disabled' : ''  "
+								class="page-item"><a class="page-link"
+								th:href="@{'/user/view_notes/'+${pageNo+1}}">Next</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

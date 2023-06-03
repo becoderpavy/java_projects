@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<section>
+		<!-- 		<script
+			src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+			referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector : '#mytextarea'
+			});
+		</script> -->
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+				<h1 class="text-center">Update Contact</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+
+							<form th:action="@{/user/updateform}"
+								enctype="multipart/form-data" method="post">
+
+							<input type="hidden" th:value="${con.id}" name="id">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-plus"></i>
+										</div>
+									</div>
+
+									<input type="text" name="name" placeholder="Enter Name Here"
+										th:value="${con.name}" required class="form-control">
+								</div>
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fas fa-user-alt"></i>
+										</div>
+									</div>
+
+									<input type="text" name="secondName"
+										th:value="${con.secondName}" class="form-control" required>
+								</div>
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fas fa-phone"></i>
+										</div>
+									</div>
+
+									<input type="number" name="phone" min="10"
+										th:value="${con.phone}" class="form-control" required>
+								</div>
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">@</div>
+									</div>
+
+									<input th:value="${con.email}" type="email" name="email"
+										required class="form-control">
+								</div>
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-briefcase"></i>
+										</div>
+									</div>
+
+									<input type="text" name="work" th:value="${con.work}" required
+										class="form-control">
+								</div>
+
+
+								<div class="form-group mt-3">
+									<textarea id="mytextarea" rows="15" cols=""
+										class="form-control" required name="description"
+										th:text="${con.description}">
+										
+										</textarea>
+								</div>
+
+								<div class="container text-center">
+									<img class="img-fluid" style="height: 200px; width: 200px; border-radius: 50%; border: 1px solid black;"
+										alt="" th:src="@{'/img/'+${con.imgUrl}}">
+								</div>
+
+								<div>
+									<input type="file" name="imgName" class="form-control">
+								</div>
+								<div class="text-center mt-3">
+									<button class="btn btn-success">Save Contact</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+</body>
+</html>

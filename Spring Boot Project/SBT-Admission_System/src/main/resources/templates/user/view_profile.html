@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-2">
+			<div class="row">
+
+				<div class="col-md-6 offset-md-3 mt-1">
+					<div class="card paint-card">
+						<div class="text-center">
+
+							<div class="text-center">
+								<img alt="" src="../img/profile.jpg" width="100px"
+									height="100px">
+							</div>
+
+							<p class="text-center text-custom fs-2">Profile</p>
+							<hr>
+						</div>
+						<div class="card-body">
+
+
+							<div style="margin-left: 30px;">
+								<form>
+									<table class="table table-borderless">
+										<tr class="p-3">
+											<td class="fw-bold">First Name :</td>
+											<td>Pabitra</td>
+										</tr>
+
+										<tr>
+											<td class="fw-bold">Last Name :</td>
+											<td>Das</td>
+										</tr>
+
+										<tr>
+											<td class="fw-bold">Email :</td>
+											<td>sk@gmail.com</td>
+										</tr>
+
+
+										<tr>
+											<td class="fw-bold">Mobile Number :</td>
+											<td>458348923</td>
+										</tr>
+
+
+										<tr>
+											<td class="fw-bold">Address :</td>
+											<td>Achrya Vihar,Bbsr,Odisha,754005</td>
+										</tr>
+									</table>
+
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-custom p-2" style="margin-top: 170px">
+			<p class="text-center text-white">@copyright reserverd by
+				eadmission.com</p>
+		</div>
+	</section>
+</body>
+</html>

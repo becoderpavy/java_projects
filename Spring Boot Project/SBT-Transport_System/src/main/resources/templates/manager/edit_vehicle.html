@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Signup</title>
+<style type="text/css">
+.paint-card {
+	box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.3);
+}
+
+.error {
+	color: red;
+}
+</style>
+
+</head>
+<body style="background: url('../img/tr4.png');">
+
+	<div class="container p-3">
+		<div class="row">
+			<div class="col-md-6 ">
+				<div class="card paint-card">
+					<div class="card-body">
+						<p class="fs-4 text-center">Update Truck</p>
+
+						<form id="userRegister" novalidate class="row g-3"
+							action="/manager/updateVehicle" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="id" th:value="${v.id}">
+							<div class="col-6">
+								<label class="form-label">Vehicle Number</label> <input
+									type="text" name="vechicleNumber"
+									th:value="${v.vechicleNumber}"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-6">
+								<label class="form-label">Vechicle Type</label> <input
+									type="text" name="vehicleType" th:value="${v.vehicleType}"
+									class="form-control form-control-sm">
+							</div>
+							<input type="hidden" name="location" th:value="${v.location}">
+
+
+
+
+							<div class="col-md-12">
+								<label class="form-label">Availability</label> <select
+									name="availability" class="form-control form-control-sm ">
+									<option th:value="${v.availability}">[[${v.availability}]]</option>
+									<option>Booked</option>
+									<option>Available</option>
+								</select>
+							</div>
+
+							<div class="col-md-12">
+								<label class="form-label">Insurance Status</label> <input
+									th:value="${v.insuranceStatus}" id="pass" type="text"
+									name="insuranceStatus" class="form-control form-control-sm">
+							</div>
+
+							<div class="col-md-12">
+								<label class="form-label">Description</label> <input id="pass"
+									th:value="${v.description}" type="text" name="description"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-6">
+								<label class="form-label">Owner Name</label> <input id="pass"
+									th:value="${v.ownerName}" type="text" name="ownerName"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-6">
+								<label class="form-label">Contact No</label> <input id="pass"
+									th:value="${v.contactNo}" type="text" name="contactNo"
+									class="form-control form-control-sm">
+							</div>
+
+							<div class="col-12">
+								<label class="form-label">Image</label> <input id="pass"
+									type="file" name="imgx" class="form-control form-control-sm">
+								<strong>uploaded img</strong> <img alt=""
+									th:src="@{'../../veh_img/'+${v.img}}" width="60px"
+									height="60px">
+							</div>
+							<input type="hidden" name="img" th:value="${v.img}">
+
+							<button class="btn bg-custom text-white col-md-12 mt-3">Update
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/user_script.js"></script>
+
+</body>
+</html>

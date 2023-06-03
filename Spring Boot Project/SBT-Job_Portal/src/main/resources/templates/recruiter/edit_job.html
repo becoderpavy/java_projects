@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="recruiter/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-2">
+			<div class="col-md-10 offset-md-1">
+
+				<div class="card paint-card">
+					<div class="card-body">
+						<div class="text-center text-success">
+							<i class="fa-solid fa-list fa-3x"></i>
+							<h5>Add Jobs</h5>
+							<div th:if="${session.succMsg}" class="text-center">
+								<h5 class="text-success fs-3" th:text="${session.succMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<h5 class="text-danger fs-3" th:text="${session.errorMsg}"></h5>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+						</div>
+						<form th:action="@{/recruiter/updateJob}" method="post">
+							<input type="hidden" th:value="${user.id}" name="recruiterId">
+
+							<input type="hidden" th:value="${j.id}" name="id">
+							<div class="form-group">
+								<label>Enter Title</label> <input type="text" name="title" th:value="${j.title}"
+									class="form-control">
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-3">
+									<label>Company Name</label> <input type="text"
+										th:value="${j.companyName}" name="companyName"
+										class="form-control">
+								</div>
+
+								<div class="form-group col-md-3">
+									<label>Location</label> <select name="location"
+										class="custom-select " required
+										id="inlineFormCustomSelectPref">
+										<option th:value="${j.location}">[[${j.location}]]</option>
+										<option value="Banglore">Banglore</option>
+										<option value="Chennai">Chennai</option>
+										<option value="Hydrabad">Hydrabad</option>
+										<option value="Bhubaneswar">Bhubaneswar</option>
+										<option value="Delhi">Delhi</option>
+
+									</select>
+								</div>
+								<div class="form-group col-md-3">
+									<label>Category</label> <select class="custom-select "
+										id="inlineFormCustomSelectPref" name="category">
+										<option th:value="${j.category}">[[${j.category}]]</option>
+										<option value="IT">IT</option>
+										<option value="Devloper">Devloper</option>
+										<option value="Banking">Banking</option>
+										<option value="Engineer">Engineer</option>
+										<option value="Teacher">Teacher</option>
+									</select>
+								</div>
+
+								<div class="form-group col-md-3">
+									<label>Status</label> <select class="form-control"
+										name="status">
+										<option class="Active" th:value="${j.status}">[[${j.status}]]</option>
+										<option class="Active" value="Active">Active</option>
+										<option class="Inactive" value="Inactive">Inactive</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label>Enter Description</label>
+								<textarea required rows="6" cols="" name="description"
+									class="form-control">[[${j.description}]]</textarea>
+							</div>
+							<button class="btn btn-success">Update Job</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

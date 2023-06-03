@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="faculity/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<p class="fs-1 text-center">Faculity Dashboard</p>
+
+		<div class="container">
+			<div class="row p-3">
+				<div class="col-md-3 mt-3">
+					<a th:href="@{/faculity/addTimetable}" class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-table fa-2x"></i> <br>
+								<p class="fs-2">Add Timetable</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-3">
+					<a th:href="@{/faculity/viewTimetable}" class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-table fa-2x"></i> <br>
+								<p class="fs-2">View Timetable</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-3">
+					<a th:href="@{/faculity/addNoticeboard}" class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-clipboard fa-2x"></i> <br>
+								<p class="fs-2">Add Notice board</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-3">
+					<a th:href="@{/faculity/viewNoticeboard}" class="text-decoration-none text-success">
+						<div class="card paint-card">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-clipboard fa-2x"></i> <br>
+								<p class="fs-2">View Notice board</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-md-3 mt-5">
+					<a th:href="@{/faculity/viewStudent}" class="text-decoration-none text-success">
+						<div class="card paint-card" style="height: 130px">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-chalkboard-user fa-2x"></i> <br>
+								<p class="fs-2">Student Details</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-5">
+					<a th:href="@{/faculity/uploadAssignment}" class="text-decoration-none text-success">
+						<div class="card paint-card" style="height: 130px">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-circle-arrow-up fa-2x"></i> <br>
+								<p class="fs-3">Upload Assignmnent</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-3 mt-5">
+					<a th:href="@{/faculity/viewAssignment}" class="text-decoration-none text-success">
+						<div class="card paint-card" style="height: 130px">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-list fa-2x"></i> <br>
+								<p class="fs-2">View Assignmnent</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				<div class="col-md-3 mt-5">
+					<a th:href="@{/faculity/viewAssignmentAnswer}" class="text-decoration-none text-success">
+						<div class="card paint-card" style="height: 130px">
+							<div class="card-body text-center text-success">
+								<i class="fa-solid fa-list fa-2x"></i> <br>
+								<p class="fs-3">Assignmnent Answer</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+
+
+		<div class="bg-success p-2" style="margin-top: 100px">
+			<p class="text-center text-white">@copyright reserverd by
+				studentportal.com</p>
+		</div>
+
+	</section>
+</body>
+</html>

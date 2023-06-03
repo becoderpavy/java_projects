@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="hr/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center fs-4">Employee Details</div>
+						<div class="card-body">
+
+
+							<table class="table table-borderless">
+
+								<tbody>
+								<tr>
+										<th scope="row">EMP Id</th>
+										<td>:</td>
+										<td>[[${empdtls.empId }]]</td>
+									</tr>
+									<tr>
+									
+										<th scope="row">Full Name</th>
+										<td>:</td>
+										<td>[[${empdtls.firstName +empdtls.lastName }]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">Joining Date</th>
+										<td>:</td>
+										<td>[[${empdtls.joiningDate}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">ROLE</th>
+										<td>:</td>
+										<td>
+										
+										<th:block th:if="${empdtls.role=='ROLE_USER'}">
+										Employee
+										</th:block>
+										
+										<th:block th:if="${empdtls.role=='ROLE_MANAGER'}">
+										Manager
+										</th:block>
+										
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">DOB</th>
+										<td>:</td>
+										<td>[[${empdtls.dob}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">Mob No</th>
+										<td>:</td>
+										<td>[[${empdtls.mobNo}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">Email</th>
+										<td>:</td>
+										<td>[[${empdtls.email}]]</td>
+									</tr>
+									<tr>
+										<th scope="row">Address</th>
+										<td>:</td>
+										<td>[[${empdtls.address}]]</td>
+									</tr>
+									<tr>
+										<th scope="row">City</th>
+										<td>:</td>
+										<td>[[${empdtls.city}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">State</th>
+										<td>:</td>
+										<td>[[${empdtls.state}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">Pincode</th>
+										<td>:</td>
+										<td>[[${empdtls.pincode}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">Department</th>
+										<td>:</td>
+										<td>[[${empdtls.department}]]</td>
+									</tr>
+
+									<tr>
+										<th scope="row">Position</th>
+										<td>:</td>
+										<td>[[${empdtls.position}]]</td>
+									<tr>
+										<th scope="row">Salary</th>
+										<td>:</td>
+										<td>[[${empdtls.salary}]]</td>
+									</tr>
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

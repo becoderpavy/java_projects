@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card  paint-card">
+						<div class="text-end mt-1">
+							<button class="btn btn-sm btn-primary" onclick="window.print()">Print</button>
+						</div>
+						<div class="card-body">
+							<p class="text-center fs-4 text-success">Survey :
+								[[${survey.title}]]</p>
+
+							<form th:action="@{/user/submitSurvey}" method="post">
+							<div class="mt-4" th:each="list,istart:${sqlist}">
+								<p class="ms-2 fw-bold">[[${istart.count}]])
+									[[${list.question}]]</p>
+
+								
+
+									
+									
+									<input type="hidden" th:value="${user.id}" name="userId">
+									
+									<input type="hidden" th:value="${list.surveyId}" name="surveyId">
+									
+									<div class=" ms-5">
+										<input class="form-check-input" type="radio"
+											th:name="${'ques'+istart.count+'Ans'}" id="flexRadioDefault1" value="1"> <label
+											class="form-check-label" for="flexRadioDefault1">
+											[[${list.firstAns}]] </label> <br> 
+											
+											<input
+											class="form-check-input" type="radio" th:name="${'ques'+istart.count+'Ans'}"
+											id="flexRadioDefault1" value="2"> <label
+											class="form-check-label" for="flexRadioDefault1">
+											[[${list.secondAns}]] </label> <br> 
+											
+											<input
+											class="form-check-input" type="radio" th:name="${'ques'+istart.count+'Ans'}"
+											id="flexRadioDefault1" value="3"> <label
+											class="form-check-label" for="flexRadioDefault1">
+											[[${list.thirdAns}]] </label> <br> 
+											
+											<input
+											class="form-check-input" type="radio" th:name="${'ques'+istart.count+'Ans'}"
+											id="flexRadioDefault1" value="4"> <label
+											class="form-check-label" for="flexRadioDefault1">
+											[[${list.fourthAns}]] </label> <br>
+									</div>
+
+									
+
+								
+							</div>
+								
+								<div class="text-center"><button class="btn btn-primary ">Submit</button></div>
+								
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

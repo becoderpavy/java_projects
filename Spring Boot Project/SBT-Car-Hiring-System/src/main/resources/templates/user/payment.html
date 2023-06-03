@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="container p-3">
+			<div class="row">
+
+				<div class="col-md-9">
+					<div class="card paint-card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6">
+									<img alt="" th:src="@{'/img/'+${v.image}}" width="400px"
+										height="400px">
+								</div>
+								<div class="col-md-6">
+									<h1>[[${v.vehicleName}]]</h1>
+									<br>
+									<p>
+										<span class="fw-bold">Vehicle Type :</span>
+										[[${v.vehicleType}]]
+									</p>
+									<p>
+										<span class="fw-bold">Seat Capacity :</span>
+										[[${v.seatCapacity}]]
+									</p>
+									<p>
+										<span class="fw-bold">Fuel :</span> [[${v.fuel}]]</span>
+									</p>
+									<p>
+										<span class="fw-bold">Rent :</span> [[${v.rentDay}]] / Day
+									</p>
+
+									<form th:action="@{/user/bookData}" method="post">
+										<input type="hidden" name="vehicleId" th:value="${v.id}">
+										<div class="row mt-3">
+											<div class="col">
+												<label>Booking Date</label> <input type="date"
+													name="bookingDate" required id="psw"
+													class="form-control form-control-sm"
+													th:value="${d.bookingDate}">
+											</div>
+											<div class="col">
+												<label>End Date</label> <input type="date" name="endDate"
+													class="form-control form-control-sm"
+													th:value="${d.endDate}">
+											</div>
+										</div>
+
+										<div class="row mt-3">
+											<div class="col">
+												<label>Destination From</label> <input type="text"
+													value="Hydrabad" readonly="readonly" name="from" required
+													id="psw" class="form-control form-control-sm">
+											</div>
+											<div class="col">
+												<label>To</label> <select
+													class="form-control form-control-sm" name="to">
+													<option th:value="${d.to}">[[${d.to}]]</option>
+													<option value="Srisailam">Srisailam</option>
+													<option value="Nagarjunasagar">Nagarjunasagar</option>
+													<option value="Tirupathi">Tirupathi</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="mt-2">
+											<button class="btn btn-warning col-md-12 text-light">Payment</button>
+										</div>
+									</form>
+
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 mt-2">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="fs-6 text-Secondary text-center">Payment</p>
+							<p class="fw-bold" style="color: black;">
+								Amount: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+								<i class="fa-solid fa-indian-rupee-sign"></i> [[${totalAmount}]]<br>
+								Other Charge:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i
+									class="fa-solid fa-indian-rupee-sign"></i> 60 <br> Tax
+								:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+								&nbsp; &nbsp; &nbsp; <i class="fa-solid fa-indian-rupee-sign"></i>
+								30
+							</p>
+							<hr>
+							<p class="fw-bold">
+								Total Amount:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i
+									class="fa-solid fa-indian-rupee-sign"></i>[[${atotalAmount}]]<br>
+
+								<!-- Payment Type:&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+								&nbsp;&nbsp; &nbsp;&nbsp; Cash On Delivary -->
+
+
+							</p>
+
+
+
+
+							<form class="row g-3" th:action="@{/user/orders}" method="post">
+
+								<input type="hidden" name="vehicleId" th:value="${d.vehicleId}"> 
+								<input type="hidden" name="from" th:value="${d.from}"> 
+								<input type="hidden" name="to" th:value="${d.to}"> 
+								<input type="hidden" name="bookingDate" th:value="${d.bookingDate}">
+								<input type="hidden" name="endDate" th:value="${d.endDate}" > 
+								<input type="hidden" name="totalAmount" th:value="${atotalAmount}">
+									
+								<div class="form-group">
+									<label class="form-label">Payment Mode</label> <select
+										name="type" class="form-control form-control-sm">
+										<option>--select--</option>
+										<!-- <option value="Debit card">Debit Card</option> -->
+										<option value="COD">Cash On Hand</option>
+									</select>
+								</div>
+								<input type="hidden" name="amt" value="120"> <input
+									type="hidden" value="1" name="uid">
+
+								<button class="btn btn-warning col-md-12 text-white">Pay
+									Now</button>
+
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

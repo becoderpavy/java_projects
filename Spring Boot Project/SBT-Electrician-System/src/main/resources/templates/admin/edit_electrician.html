@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid bg-light p-2">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="card paint-card">
+						<div class="card-body">
+							<h3 class="text-center text-danger">Edit Electrician</h3>
+
+							
+
+							<form th:action="@{/admin/updateElectrician}" class="mt-2"
+								method="post" id="userRegister" novalidate enctype="multipart/form-data">
+
+								<div class="row">
+									<div class="col">
+										<label>First Name</label> <input type="text" name="firstName"
+											required class="form-control form-control-sm"
+											th:value="${e.firstName}">
+									</div>
+									<div class="col">
+										<label>Last Name</label> <input type="text" name="lastName"
+											required class="form-control form-control-sm"
+											th:value="${e.lastName}">
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label>Email Id</label> <input type="text" name="email"
+											required class="form-control form-control-sm"
+											th:value="${e.email}">
+									</div>
+									<div class="col">
+										<label>Mobile No</label> <input type="text" name="mobNo"
+											required class="form-control form-control-sm"
+											th:value="${e.mobNo}">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Specialization</label> <input type="text"
+											name="specialization" required id="psw"
+											th:value="${e.specialization}"
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>Experience</label> <input type="text" name="experience"
+											th:value="${e.experience}"
+											class="form-control form-control-sm">
+									</div>
+								</div>
+
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Address</label> <input type="text" name="address"
+											th:value="${e.address}" required
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>City</label> <input type="text" name="city" required
+											th:value="${e.city}" class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>State</label> <input type="text" name="state" required
+											th:value="${e.state}" class="form-control form-control-sm">
+									</div>
+
+								</div>
+
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>Pincode</label> <input type="text" name="pincode"
+											th:value="${e.pincode}" required
+											class="form-control form-control-sm">
+									</div>
+									<div class="col">
+										<label>Profile Image</label> <input type="file" name="img"
+											class="form-control form-control-sm"> <small>uploded
+											img : [[${e.fileName}]] </small>
+									</div>
+
+								</div>
+								<input type="hidden" name="id" th:value="${e.id}">
+								<div class="text-center mt-3">
+									<button class="btn btn-danger col-md-4">Update</button>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-1">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Edit Book</h4>
+							<form class="form-signin" method="post"
+								th:action="@{/updateBook}" enctype="multipart/form-data">
+
+
+								<input type="hidden" name="id" th:value="${book.id}">
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Book Name</label> <input type="text" class="form-control" required
+										name="bookName" th:value="${book.bookName}">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Author</label> <input type="text" class="form-control" required
+										name="author" th:value="${book.author}">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Description</label>
+									<textarea rows="3" cols="" class="form-control"
+										name="description">[[${book.description}]]</textarea>
+
+								</div>
+
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Category</label> <input type="text" class="form-control" required
+										name="category" th:value="${book.category}">
+
+								</div>
+
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Price</label> <select class="form-control" name="status">
+										<option th:value="${book.status}">[[${book.status}]]</option>
+										<option>Assigned</option>
+										<option>Not Assigned</option>
+									</select>
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">
+										Image</label> <input type="file" class="form-control" name="img">
+
+									<div class="mt-2">
+										<img alt="" th:src="@{'../../book_img/'+${book.imgName}}"
+											width="70px" height="70px"> <strong>uploaded
+											Img: [[${book.imgName}]]</strong>
+									</div>
+
+								</div>
+
+
+								<button class="btn bg-primary text-white col-md-12"
+									type="submit">Submit</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

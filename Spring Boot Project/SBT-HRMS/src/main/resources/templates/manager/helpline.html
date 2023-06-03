@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="manager/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row p-4">
+				<div class="col-md-4">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Helpdesk</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-5" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-5" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form action="/manager/addHelpline" method="post">
+								<div class="mb-3">
+									<label>Full Name</label> <input type="text" name="name"
+										readonly th:value="${emp.firstName+' '+emp.lastName }"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Mobile Number</label> <input type="number" name="mobNo"
+										th:value="${emp.mobNo}" readonly class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Email</label> <input type="text" class="form-control"
+										readonly th:value="${emp.email}" name="email">
+								</div>
+
+								<div class="mb-3">
+									<label>Messages</label>
+									<textarea rows="3" cols="" class="form-control" name="message" required></textarea>
+								</div>
+								<input type="hidden" th:value="${emp.id}" name="empId">
+
+								<button class="btn bg-custom text-white">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-8">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Status</p>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Emp Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Messages</th>
+										<th scope="col">Status</th>
+
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr th:each="h,c:${list}">
+										<td>[[${c.count}]]</td>
+										<td>[[${h.name}]]</td>
+										<td>[[${h.email}]]</td>
+										<td>[[${h.message}]]</td>
+										<td>[[${h.status}]]</td>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

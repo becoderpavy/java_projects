@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<p class="text-center fs-1">Admin Dashboard</p>
+			<div class="row p-4">
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="addEmp">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-circle-plus fa-2x"></i><br>
+								<p class="fs-1">Add Employee</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="viewEmp">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-users fa-2x"></i><br>
+								<p class="fs-1">View Employee</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4">
+					<a class="text-decoration-none bg-custom" href="viewMang">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-user fa-2x"></i><br>
+								<p class="fs-1">View Manager</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mt-3">
+					<a class="text-decoration-none bg-custom" href="viewAssMang">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-bars-progress fa-2x"></i><br>
+								<p class="fs-1">Manager Assign</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mt-3">
+					<a class="text-decoration-none bg-custom" href="viewQuery">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-clipboard-question fa-2x"></i><br>
+								<p class="fs-1">Employee Query</p>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mt-3">
+					<a class="text-decoration-none bg-custom" href="viewPayslip">
+						<div class="card paint-card">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-clipboard-question fa-2x"></i><br>
+								<p class="fs-1">Pay Slip</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="bg-custom p-2 " style="margin-top: 150px">
+			<p class="text-center text-white">@copyright reserverd by
+				empsystem.com</p>
+		</div>
+	</section>
+</body>
+</html>

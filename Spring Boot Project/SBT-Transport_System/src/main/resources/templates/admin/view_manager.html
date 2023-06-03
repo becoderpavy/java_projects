@@ -1,0 +1,63 @@
+
+<!DOCTYPE >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::body})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body
+	style="height: 90vh; background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../img/tr1.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+	<div class="container p-4">
+		<div class="col-md-10 offset-md-1">
+			<div class="card paint-card">
+				<div class="card-body">
+					<p class="fs-4 text-center">Manager Details</p>
+					<div th:if="${session.succMsg}" class="text-center">
+						<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+						<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+					</div>
+
+					<div th:if="${session.errorMsg}" class="text-center">
+						<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+						<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Sl No</th>
+								<th scope="col">Name</th>
+								<th scope="col">Username</th>
+								<th scope="col">Email</th>
+								<th scope="col">Location</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="m,c:${list}">
+								<th:block th:if="${m.role!='ROLE_ADMIN'}">
+									<th:block th:if="${m.role!='ROLE_USER'}">
+										<td>[[${c.count-1}]]</td>
+										<td>[[${m.fullName}]]</td>
+										<td>[[${m.userName}]]</td>
+										<td>[[${m.email}]]</td>
+										<td>[[${m.location}]]</td>
+										<td><a th:href="@{'editManager/'+${m.id}}"
+											class="btn btn-sm btn-primary">Edit</a> <a
+											th:href="@{'deleteManager/'+${m.id}}"
+											class="btn btn-sm btn-danger ms-1">Delete</a></td>
+									</th:block>
+								</th:block>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

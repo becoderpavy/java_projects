@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-4 bg-custom">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<form action="/librian/searchIssueBook" method="post">
+						<div class="input-group">
+							<input type="text" class="form-control" name="email"
+								placeholder="Enter Email">
+							<button class="btn bg-white ms-2 col-md-2 text-dark">
+								<i class="fa-solid fa-magnifying-glass"></i> Search
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container p-2">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="card paint-card ">
+						<div class="card-body">
+							<h6 class="text-center">User Details</h6>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fw-bold" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fw-bold" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<hr>
+
+							<th:block th:if="${st=='no'}">
+								<form>
+									<div class="row">
+										<div class="col mb-3">
+											<label>Full Name</label> <input type="text" readonly
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Email</label> <input type="text" readonly
+												class="form-control form-control-sm">
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col mb-3">
+											<label>Mobile Number</label> <input type="text" readonly
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Book</label> <select
+												class="form-control form-control-sm">
+												<option>-- select --</option>
+												<option th:each="b:${bookList}" th:value="${b.id}">[[${b.bookName}]]
+													( [[${b.author}]] )</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col mb-3">
+											<label>Issue Date</label> <input type="date"
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Return Date</label> <input type="date"
+												class="form-control form-control-sm">
+										</div>
+
+										<div class="col mb-3">
+											<label>Status</label> <select
+												class="form-control form-control-sm">
+												<option>-- select --</option>
+												<option>issued</option>
+												<option>Pending</option>
+											</select>
+										</div>
+									</div>
+
+									<button class="btn bg-custom col-md-12 text-white mt-3">Apply</button>
+
+								</form>
+							</th:block>
+							<th:block th:if="${st=='yes'}">
+								<th:block th:if="${us!=null}">
+									<form method="post" action="/librian/applyIssueBook">
+										<div class="row">
+											<div class="col mb-3">
+												<label>Full Name</label> <input type="text" readonly
+													required th:value="${us.firstName}+' '+ ${us.lastName} "
+													class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Email</label> <input type="text" readonly required
+													th:value="${us.email}" class="form-control form-control-sm">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col mb-3">
+												<label>Mobile Number</label> <input type="text" readonly
+													required th:value="${us.mobNo}"
+													class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Book</label> <select required name="bookId"
+													class="form-control form-control-sm">
+													<option>-- select --</option>
+
+													<option th:each="b:${bookList}" th:value="${b.id}">[[${b.bookName}]]
+														( [[${b.author}]] )</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col mb-3">
+												<label>Issue Date</label> <input type="date" required
+													name="issueDate" class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Return Date</label> <input type="date" required
+													name="returnDate" class="form-control form-control-sm">
+											</div>
+
+											<div class="col mb-3">
+												<label>Status</label> <select required name="status"
+													class="form-control form-control-sm">
+													<option>-- select --</option>
+													<option>issued</option>
+													<option>Pending</option>
+												</select>
+											</div>
+										</div>
+										<input type="hidden" name="userId" th:value="${us.id}">
+										<button class="btn bg-custom col-md-12 text-white mt-3">Apply</button>
+									</form>
+								</th:block>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+	</section>
+</body>
+</html>
